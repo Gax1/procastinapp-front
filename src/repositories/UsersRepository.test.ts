@@ -18,11 +18,13 @@ describe("Given a userRepository", () => {
     });
     describe("When it return an error", () => {
       test("Then it should return an error", async () => {
-        axios.post = jest.fn().mockRejectedValue("error");
+        const error = "error";
+
+        axios.post = jest.fn().mockRejectedValue(error);
 
         const data = await userRepo.sendRegistration(user);
 
-        expect(data).toStrictEqual("error");
+        expect(data).toStrictEqual(error);
       });
     });
   });
