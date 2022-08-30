@@ -1,4 +1,8 @@
+import { Button } from "../Button/Button";
+
 const RegisterForm = (): JSX.Element => {
+  const registerText = "Register";
+
   return (
     <div className="register-container">
       <form className="form form-register">
@@ -21,6 +25,7 @@ const RegisterForm = (): JSX.Element => {
           type="file"
           className="form-input register-input__select-image"
         />
+        <Button buttonText={registerText} />
       </form>
     </div>
   );
