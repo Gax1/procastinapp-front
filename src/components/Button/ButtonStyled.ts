@@ -6,6 +6,9 @@ export const ButtonStyled = styled.button`
   height: 60px;
   border-radius: ${(props) => props.theme.borderRadius};
   font-size: ${(props) => props.theme.fontSizesMobile.mediumTitles};
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
 
   @media (min-width: 768px) {
     width: 360px;

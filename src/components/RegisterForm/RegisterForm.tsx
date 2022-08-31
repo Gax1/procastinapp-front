@@ -2,7 +2,14 @@ import { Button } from "../Button/Button";
 import { RegisterFormStyled } from "./RegisterFormStyled";
 
 const RegisterForm = (): JSX.Element => {
-  const registerText = "Register";
+  const initialUserState = {
+    username: "",
+    password: "",
+    repetedPassword: "",
+    img: "",
+  };
+
+  const formData = new FormData();
 
   return (
     <RegisterFormStyled>
@@ -27,7 +34,7 @@ const RegisterForm = (): JSX.Element => {
             type="file"
             className="form-input register-input__select-image"
           />
-          <Button buttonText={registerText} />
+          <Button buttonText="Register" />
         </form>
       </div>
     </RegisterFormStyled>

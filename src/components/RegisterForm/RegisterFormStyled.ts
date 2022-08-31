@@ -24,6 +24,7 @@ export const RegisterFormStyled = styled.div`
     border-radius: ${(props) => props.theme.borderRadius};
     width: ${(props) => props.theme.inputsSizesMobile.mobileWidth};
     height: ${(props) => props.theme.inputsSizesMobile.mobileHeigth};
+    border: none;
     @media (min-width: 768px) {
       width: ${(props) => props.theme.inputsSizesDesktop.desktopWith};
       height: ${(props) => props.theme.inputsSizesDesktop.desktopHeigh};
