@@ -1,21 +1,33 @@
 import { render, screen } from "@testing-library/react";
+import { ThemeProvider } from "styled-components";
+import { theme } from "../../themes/theme";
 import RegisterForm from "./RegisterForm";
 
 describe("Given a register form component", () => {
   describe("When reder", () => {
     test("Then it should show 3 inputs", () => {
-      render(<RegisterForm />);
+      render(
+        <ThemeProvider theme={theme}>
+          <RegisterForm />
+        </ThemeProvider>
+      );
       const inputs = screen.getAllByRole("textbox");
 
-      inputs.forEach((input) => {
-        expect(input).toBeInTheDocument();
-      });
+      // inputs.forEach((input) => expect(input).toBeInTheDocument());
+      expect(inputs.length).toStrictEqual(3);
     });
     test("Then it should show two buttons", () => {
-      render(<RegisterForm />);
+      render(
+        <ThemeProvider theme={theme}>
+          <RegisterForm />
+        </ThemeProvider>
+      );
       const buttons = screen.getAllByRole("button");
+      const registerButton = screen.getByText("Register");
 
       buttons.forEach((button) => expect(button).toBeInTheDocument());
+
+      expect(registerButton).toBeInTheDocument();
     });
   });
 });
