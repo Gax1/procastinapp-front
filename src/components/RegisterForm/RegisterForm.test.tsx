@@ -12,9 +12,7 @@ describe("Given a register form component", () => {
         </ThemeProvider>
       );
       const inputs = screen.getAllByRole("textbox");
-
-      // inputs.forEach((input) => expect(input).toBeInTheDocument());
-      expect(inputs.length).toStrictEqual(3);
+      inputs.forEach((input) => expect(input).toBeInTheDocument());
     });
     test("Then it should show two buttons", () => {
       render(

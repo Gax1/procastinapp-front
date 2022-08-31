@@ -16,16 +16,21 @@ export const RegisterFormStyled = styled.div`
     display: flex;
     flex-direction: column;
     gap: 30px;
+    align-items: center;
   }
   .register-input {
     font-family: inherit;
     background-color: ${(props) => props.theme.colors.mainColor};
-    border-radius: 40px;
-    min-width: 330px;
-    min-height: 65px;
+    border-radius: ${(props) => props.theme.borderRadius};
+    width: ${(props) => props.theme.inputsSizesMobile.mobileWidth};
+    height: ${(props) => props.theme.inputsSizesMobile.mobileHeigth};
+    @media (min-width: 768px) {
+      width: ${(props) => props.theme.inputsSizesDesktop.desktopWith};
+      height: ${(props) => props.theme.inputsSizesDesktop.desktopHeigh};
+    }
+    text-align: center;
     ::placeholder {
       color: ${(props) => props.theme.colors.inputTextColor};
-      padding-left: 10px;
     }
   }
 `;

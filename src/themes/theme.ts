@@ -18,4 +18,13 @@ export const theme = {
     medium: "40px",
     big: "50px",
   },
+  borderRadius: "40px",
+  inputsSizesMobile: {
+    mobileWidth: "330px",
+    mobileHeigth: "60px",
+  },
+  inputsSizesDesktop: {
+    desktopWith: "400px",
+    desktopHeigh: "60px",
+  },
 };
