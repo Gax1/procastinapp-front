@@ -50,5 +50,13 @@
   "devDependencies": {
     "@types/styled-components": "^5.1.26",
     "husky": "^8.0.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.tsx",
+      "src/**/*.ts",
+      "!src/index.tsx",
+      "!src/reportwebvitals.ts"
+    ]
   }
 }
