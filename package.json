@@ -53,8 +53,10 @@
   },
   "jest": {
     "collectCoverageFrom": [
+
       "src/**/*.tsx",
       "src/**/*.ts",
+
       "!src/index.tsx",
       "!src/reportwebvitals.ts"
     ]
