@@ -1,10 +1,13 @@
 import React from "react";
 import { RegisterPage } from "./pages/RegisterPage/RegisterPage";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <RegisterPage />
+      <Routes>
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
     </>
   );
 }
