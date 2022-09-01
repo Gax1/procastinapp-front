@@ -1,12 +1,9 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { WrapperProps } from "../../interfaces/interfaces";
 import { UserRepository } from "../../repositories/UsersRepository";
 import { store } from "../store";
 import { useUsers } from "./userHook";
-
-interface WrapperProps {
-  children: JSX.Element;
-}
 
 jest.mock("../../repositories/UsersRepository");
 UserRepository as jest.Mock;

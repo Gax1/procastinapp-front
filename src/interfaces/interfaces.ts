@@ -15,3 +15,14 @@ export interface UiState {
 export interface IUsersRepository<T extends Item> {
   sendRegistration: (user: FormData) => Promise<T>;
 }
+
+export interface RegistrationUser {
+  username: string;
+  password: string;
+  repetedPassword?: string;
+  img?: string | File;
+}
+
+export interface WrapperProps {
+  children: JSX.Element;
+}
