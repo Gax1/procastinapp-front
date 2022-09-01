@@ -6,6 +6,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "@fontsource/michroma";
 import "./index.css";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./themes/theme";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
@@ -13,7 +15,9 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>
 );
