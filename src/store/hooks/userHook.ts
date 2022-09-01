@@ -5,7 +5,7 @@ import { useAppDispatch } from "./hooks";
 export const useUsers = () => {
   const url = process.env.REACT_APP_APIURL as string;
 
-  const repoUsers = new UserRepository("http://localhost:3141");
+  const repoUsers = new UserRepository(url);
 
   const dispatch = useAppDispatch();
   const register = async (formData: FormData) => {

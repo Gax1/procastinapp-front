@@ -8,7 +8,7 @@ describe("Given a button component", () => {
     test("Then it should show a button", () => {
       render(
         <ThemeProvider theme={theme}>
-          <Button buttonText="" />
+          <Button buttonText="" disabled={false} />
         </ThemeProvider>
       );
 

@@ -34,4 +34,7 @@ export const RegisterFormStyled = styled.div`
       color: ${(props) => props.theme.colors.inputTextColor};
     }
   }
+  label {
+    color: ${(props) => props.theme.colors.fontColor};
+  }
 `;

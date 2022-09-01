@@ -35,19 +35,26 @@ const RegisterForm = (): JSX.Element => {
     formData.append("password", registerUser.password);
     formData.append("img", registerUser.img as File);
 
-    console.log(formData.get("username"));
-    console.log(formData.get("password"));
-    console.log(formData.get("img"));
-
     await register(formData);
 
     setRegisterUser(initialUserState);
   };
 
+  const isDisable =
+    registerUser.username === "" ||
+    registerUser.password === "" ||
+    registerUser.repetedPassword === "" ||
+    registerUser.password !== registerUser.repetedPassword;
+
   return (
     <RegisterFormStyled>
       <div className="register-container">
-        <form className="form form-register" onSubmit={handleOnSubmit}>
+        <form
+          className="form form-register"
+          onSubmit={handleOnSubmit}
+          data-testid="formRegister"
+        >
+          <label htmlFor="username">Username:</label>
           <input
             type="text"
             id="username"
@@ -56,6 +63,7 @@ const RegisterForm = (): JSX.Element => {
             value={registerUser.username}
             onChange={handleChange}
           />
+          <label htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
@@ -64,6 +72,7 @@ const RegisterForm = (): JSX.Element => {
             value={registerUser.password}
             onChange={handleChange}
           />
+          <label htmlFor="repetedPassword">RepetedPassword:</label>
           <input
             type="password"
             id="repetedPassword"
@@ -72,14 +81,15 @@ const RegisterForm = (): JSX.Element => {
             value={registerUser.repetedPassword}
             onChange={handleChange}
           />
+          <label htmlFor="repetedPassword">Select a file: </label>
           <input
             type="file"
             id="img"
-            name="img"
             className="form-input register-input__select-image"
             onChange={handleChangeFile}
+            data-testid="img"
           />
-          <Button buttonText="Register" />
+          <Button buttonText="Register" disabled={isDisable} />
         </form>
       </div>
     </RegisterFormStyled>
