@@ -1,13 +1,13 @@
 import React from "react";
-import RegisterForm from "./components/RegisterForm/RegisterForm";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./themes/theme";
+import { RegisterPage } from "./pages/RegisterPage/RegisterPage";
 
 function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RegisterForm />
+        <RegisterPage />
       </ThemeProvider>
     </>
   );

@@ -10,13 +10,13 @@ export const theme = {
     generalUse: "18px",
     medium: "20px",
     mediumTitles: "25px",
-    big: "40px",
+    big: "35px",
   },
   fontSizesDesktop: {
     small: "20px",
     generalUse: "30px",
     medium: "40px",
-    big: "50px",
+    big: "40px",
   },
   borderRadius: "40px",
   inputsSizesMobile: {
