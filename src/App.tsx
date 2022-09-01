@@ -1,14 +1,13 @@
 import React from "react";
-import RegisterForm from "./components/RegisterForm/RegisterForm";
-import { ThemeProvider } from "styled-components";
-import { theme } from "./themes/theme";
+import { RegisterPage } from "./pages/RegisterPage/RegisterPage";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <RegisterForm />
-      </ThemeProvider>
+      <Routes>
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
     </>
   );
 }
