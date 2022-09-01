@@ -36,8 +36,6 @@ const RegisterForm = (): JSX.Element => {
     formData.append("img", registerUser.img as File);
 
     await register(formData);
-
-    setRegisterUser(initialUserState);
   };
 
   const isDisable =
@@ -72,7 +70,7 @@ const RegisterForm = (): JSX.Element => {
             value={registerUser.password}
             onChange={handleChange}
           />
-          <label htmlFor="repetedPassword">RepetedPassword:</label>
+          <label htmlFor="repetedPassword">Repeat youre Password:</label>
           <input
             type="password"
             id="repetedPassword"

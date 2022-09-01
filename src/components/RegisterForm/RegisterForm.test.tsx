@@ -1,4 +1,4 @@
-import { getByTestId, render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { WrapperProps } from "../../interfaces/interfaces";
@@ -6,6 +6,7 @@ import { store } from "../../store/store";
 import { theme } from "../../themes/theme";
 import RegisterForm from "./RegisterForm";
 import userEvent from "@testing-library/user-event";
+import React from "react";
 
 const Wrapper = ({ children }: WrapperProps) => {
   return <Provider store={store}>{children}</Provider>;
