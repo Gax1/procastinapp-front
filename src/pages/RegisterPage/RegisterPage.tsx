@@ -8,7 +8,7 @@ export const RegisterPage = (): JSX.Element => {
   return (
     <>
       <RegisterPageStyled>
-        <Header />
+        <Header logout={() => {}} />
         <div className="page-title-container">
           <span className="page-title navigation-arrow">
             <FontAwesomeIcon className="icon" icon={faReply} />

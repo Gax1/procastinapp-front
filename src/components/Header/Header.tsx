@@ -1,10 +1,25 @@
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 import { HeaderStyled } from "./HeaderStyled";
 
-export const Header = (): JSX.Element => {
+interface HeaderProps {
+  logout: () => void;
+}
+
+export const Header = ({ logout }: HeaderProps): JSX.Element => {
+  const { isUserLoggedIn } = useSelector((state: RootState) => state.ui);
+
   return (
     <HeaderStyled>
       <div className="header-container">
         <h1 className="main-title">ProcastinapP</h1>
+        {isUserLoggedIn ? (
+          <FontAwesomeIcon icon={faUser} onClick={logout} />
+        ) : (
+          ""
+        )}
       </div>
     </HeaderStyled>
   );

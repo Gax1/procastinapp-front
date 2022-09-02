@@ -10,6 +10,7 @@ export interface Item {
 
 export interface UiState {
   registerNotification: boolean;
+  isUserLoggedIn: boolean;
 }
 
 export interface IUsersRepository<T extends Item> {
