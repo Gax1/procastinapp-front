@@ -2,14 +2,22 @@ import { rest } from "msw";
 
 const apiUrl = process.env.REACT_APP_APIURL;
 
-const mockTokenResponse = {
-  user: {
-    token: "test-token",
-  },
-};
-
 export const handlers = [
-  rest.post(`${apiUrl}/users/login`, (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(mockTokenResponse));
+  rest.post(`${apiUrl}/users/login`, async (req, res, ctx) => {
+    const mockTokenResponse = {
+      user: {
+        token: "test-token",
+      },
+    };
+
+    const error = {
+      message: "user or password invalid",
+    };
+
+    const { username } = await req.json();
+    const status = username === "" ? 400 : 201;
+    const response = username === "" ? error : mockTokenResponse;
+
+    return res(ctx.status(status), ctx.json(response));
   }),
 ];

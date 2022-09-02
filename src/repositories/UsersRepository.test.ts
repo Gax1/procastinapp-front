@@ -3,16 +3,15 @@ import { UserRepository } from "./UsersRepository";
 
 describe("Given a sendLogin method", () => {
   const apiUrl = process.env.REACT_APP_APIURL as string;
-
   describe("When its called with an user", () => {
-    test("Then it should return a status 200", async () => {
+    test("Then it should return a user with a token", async () => {
       const mockTokenResponse = {
         user: {
           token: "test-token",
         },
       };
       const loginUser = {
-        username: "",
+        username: "test-user",
         password: "test-password",
       };
       const repoUsers = new UserRepository(apiUrl);
@@ -22,7 +21,22 @@ describe("Given a sendLogin method", () => {
       await expect(data).toStrictEqual(mockTokenResponse);
     });
   });
+  describe("When its called with an user without username", () => {
+    test("Then it should response an error", async () => {
+      const loginUser = {
+        username: "",
+        password: "test-password",
+      };
+
+      const repoUsers = new UserRepository(apiUrl);
+
+      const data = await repoUsers.sendLogin(loginUser);
+
+      await expect(data).toBeInstanceOf(Error);
+    });
+  });
 });
+
 describe("Given a userRepository", () => {
   const user = new FormData();
   user.append(

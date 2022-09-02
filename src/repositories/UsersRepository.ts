@@ -16,9 +16,9 @@ export class UserRepository<T extends Item> implements IUsersRepository<T> {
   sendLogin = async (user: LoginUser) => {
     try {
       const { data } = await axios.post(`${this.url}/users/login`, user);
-      return await data;
+      return data;
     } catch (error) {
-      return await error;
+      return error;
     }
   };
 }
