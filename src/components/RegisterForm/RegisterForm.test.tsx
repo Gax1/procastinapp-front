@@ -7,6 +7,9 @@ import { theme } from "../../themes/theme";
 import RegisterForm from "./RegisterForm";
 import userEvent from "@testing-library/user-event";
 import React from "react";
+import axios from "axios";
+
+axios.post = jest.fn();
 
 const Wrapper = ({ children }: WrapperProps) => {
   return <Provider store={store}>{children}</Provider>;

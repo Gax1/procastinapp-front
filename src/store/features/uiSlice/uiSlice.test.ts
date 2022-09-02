@@ -9,9 +9,11 @@ describe("Given a uiReducer", () => {
     test("Then it should change registerNotification to true", () => {
       const initialState = {
         registerNotification: false,
+        isUserLoggedIn: false,
       };
       const expectedRegisterNotification = {
         registerNotification: true,
+        isUserLoggedIn: false,
       };
 
       const openRegisterNotificationReducerTest = uiReducer(
@@ -27,9 +29,11 @@ describe("Given a uiReducer", () => {
       test("Then it should change registerNotification to false", () => {
         const initialState = {
           registerNotification: true,
+          isUserLoggedIn: false,
         };
         const expectedRegisterNotification = {
           registerNotification: false,
+          isUserLoggedIn: false,
         };
 
         const closeRegisterNotificationReducerTest = uiReducer(
