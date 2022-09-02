@@ -15,10 +15,10 @@ export class UserRepository<T extends Item> implements IUsersRepository<T> {
 
   sendLogin = async (user: LoginUser) => {
     try {
-      const { data } = await axios.post(`${this.url}/users/login`);
-      return data;
+      const { data } = await axios.post(`${this.url}/users/login`, user);
+      return await data;
     } catch (error) {
-      return error;
+      return await error;
     }
   };
 }
