@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UiState } from "../../../interfaces/interfaces";
 
 const initialUiState: UiState = {
@@ -10,11 +10,11 @@ const uiSlice = createSlice({
   name: "ui",
   initialState: initialUiState,
   reducers: {
-    openRegisterNotification: (previusUi) => ({
+    openNotification: (previusUi, action: PayloadAction<string>) => ({
       ...previusUi,
       registerNotification: true,
     }),
-    closeRegisterNotification: (previusUi) => ({
+    closeNotification: (previusUi) => ({
       ...previusUi,
       registerNotification: false,
     }),
@@ -28,7 +28,7 @@ const uiSlice = createSlice({
 export const uiReducer = uiSlice.reducer;
 
 export const {
-  openRegisterNotification: openRegisterNotificationActionCreator,
-  closeRegisterNotification: closeRegisterNotificationActionCreator,
+  openNotification: openRegisterNotificationActionCreator,
+  closeNotification: closeRegisterNotificationActionCreator,
   showLogout: showLogoutActionCreator,
 } = uiSlice.actions;

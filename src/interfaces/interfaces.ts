@@ -1,7 +1,9 @@
 export interface LoginUser {
   username: string;
-  password: string;
+  password?: string;
+  id?: string;
   img?: string;
+  token?: string;
 }
 
 export interface Item {
