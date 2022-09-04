@@ -1,7 +1,14 @@
 import { RegistrationUser } from "../../interfaces/interfaces";
 import { UserRepository } from "../../repositories/UsersRepository";
-import { openNotificationActionCreator } from "../features/uiSlice/uiSlice";
-import { loginUserActionCreator } from "../features/usersSlice/usersSlice";
+import {
+  openNotificationActionCreator,
+  showLogInActionCreator,
+  showLogoutActionCreator,
+} from "../features/uiSlice/uiSlice";
+import {
+  loginUserActionCreator,
+  logOutActionCreator,
+} from "../features/usersSlice/usersSlice";
 import { useAppDispatch } from "./hooks";
 
 export const useUsers = () => {
@@ -23,14 +30,19 @@ export const useUsers = () => {
   const login = async (userData: RegistrationUser) => {
     try {
       const { user } = await repoUsers.sendLogin(userData);
-
       localStorage.setItem("token", user.token);
-
+      dispatch(showLogInActionCreator());
       dispatch(loginUserActionCreator(user));
     } catch (error) {
       dispatch(openNotificationActionCreator("Error in login"));
     }
   };
 
-  return { register, login };
+  const logOutUser = () => {
+    dispatch(logOutActionCreator());
+    dispatch(showLogoutActionCreator());
+    localStorage.removeItem("token");
+  };
+
+  return { register, login, logOutUser };
 };

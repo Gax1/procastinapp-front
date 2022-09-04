@@ -56,7 +56,7 @@ const RegisterForm = (): JSX.Element => {
             type="text"
             id="username"
             className="form-input register-input"
-            placeholder="here goes youre name..."
+            placeholder="here goes youre username..."
             value={registerUser.username}
             onChange={handleChange}
           />

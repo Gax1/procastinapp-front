@@ -16,7 +16,7 @@ const Wrapper = ({ children }: WrapperProps) => {
 };
 
 describe("Given a register form component", () => {
-  const inputUsernamePlaceHolder = "here goes youre name...";
+  const inputUsernamePlaceHolder = "here goes youre username...";
   const placeHolderPassword = "here goes youre password...";
   const repetedPasswordPlaceHolder = "youre password again";
 

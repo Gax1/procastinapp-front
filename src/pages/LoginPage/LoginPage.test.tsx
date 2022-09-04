@@ -5,63 +5,49 @@ import { ThemeProvider } from "styled-components";
 import { WrapperProps } from "../../interfaces/interfaces";
 import { store } from "../../store/store";
 import { theme } from "../../themes/theme";
-import { RegisterPage } from "./RegisterPage";
+import { LoginPage } from "./LoginPage";
 
 const Wrapper = ({ children }: WrapperProps) => {
   return <Provider store={store}>{children}</Provider>;
 };
 
-describe("Given a registerPage component", () => {
+describe("Given a LoginPage component", () => {
   describe("When rendered", () => {
-    test("Then it should show a title", () => {
-      const pageTitle = "Register";
-
-      render(
-        <BrowserRouter>
-          <Wrapper>
-            <ThemeProvider theme={theme}>
-              <RegisterPage />
-            </ThemeProvider>
-          </Wrapper>
-        </BrowserRouter>
-      );
-
-      const title = screen.getByRole("heading", { name: pageTitle });
-
-      expect(title).toBeInTheDocument();
-    });
     test("Then it should show a header with a title", () => {
-      const mainHeaderTitle = "ProcastinapP";
+      const mainTitleText = "ProcastinapP";
+
       render(
         <BrowserRouter>
           <Wrapper>
             <ThemeProvider theme={theme}>
-              <RegisterPage />
+              <LoginPage />
             </ThemeProvider>
           </Wrapper>
         </BrowserRouter>
       );
-
-      const mainTitle = screen.getByRole("heading", { name: mainHeaderTitle });
+      const mainTitle = screen.getByRole("heading", { name: mainTitleText });
 
       expect(mainTitle).toBeInTheDocument();
     });
-    test("Then it should show a form", () => {
-      const formTextId = "formRegister";
-
+    test("Then it should two inputs", () => {
+      const inputUsernamePlaceHolder = "here goes youre username...";
+      const placeHolderPassword = "here goes youre password...";
       render(
         <BrowserRouter>
           <Wrapper>
             <ThemeProvider theme={theme}>
-              <RegisterPage />
+              <LoginPage />
             </ThemeProvider>
           </Wrapper>
         </BrowserRouter>
       );
+      const inputUsername = screen.getByPlaceholderText(
+        inputUsernamePlaceHolder
+      );
+      const inputPassword = screen.getByPlaceholderText(placeHolderPassword);
 
-      const form = screen.getByTestId(formTextId);
-
-      expect(form).toBeInTheDocument();
+      expect(inputUsername).toBeInTheDocument();
+      expect(inputPassword).toBeInTheDocument();
     });
   });
 });

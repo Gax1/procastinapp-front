@@ -1,6 +1,8 @@
 import {
   closeNotificationActionCreator,
   openNotificationActionCreator,
+  showLogInActionCreator,
+  showLogoutActionCreator,
   uiReducer,
 } from "./uiSlice";
 
@@ -60,6 +62,34 @@ describe("Given a uiReducer", () => {
         expect(closeNotificationReducerTest).toStrictEqual(
           expectedNotification
         );
+      });
+      test("Then it should the isUserLoggedIn to true", () => {
+        const initialState = {
+          notification: {
+            open: false,
+            displayText: "",
+          },
+          isUserLoggedIn: false,
+        };
+
+        const showLoginTest = uiReducer(initialState, showLogInActionCreator());
+
+        expect(showLoginTest.isUserLoggedIn).toStrictEqual(true);
+      });
+      test("The it should change the isUserLogged in to false", () => {
+        const initialState = {
+          notification: {
+            open: false,
+            displayText: "",
+          },
+          isUserLoggedIn: true,
+        };
+        const showLogoutTest = uiReducer(
+          initialState,
+          showLogoutActionCreator()
+        );
+
+        expect(showLogoutTest.isUserLoggedIn).toStrictEqual(false);
       });
     });
   });
