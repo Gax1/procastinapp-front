@@ -7,6 +7,8 @@ describe("Given a sendLogin method", () => {
     test("Then it should return a user with a token", async () => {
       const mockTokenResponse = {
         user: {
+          username: "test-user",
+          id: "test-id",
           token: "test-token",
         },
       };

@@ -5,13 +5,11 @@ describe("Given a users slice", () => {
     test("Then it should change the initial state", () => {
       const initialState = {
         username: "",
-        password: "",
         token: "",
         id: "",
       };
       const expectedState = {
         username: "test-username",
-        password: "",
         token: "test-token",
         id: "test-password",
       };

@@ -1,6 +1,6 @@
 import {
-  closeRegisterNotificationActionCreator,
-  openRegisterNotificationActionCreator,
+  closeNotificationActionCreator,
+  openNotificationActionCreator,
   uiReducer,
 } from "./uiSlice";
 
@@ -8,41 +8,57 @@ describe("Given a uiReducer", () => {
   describe("When its called with an initial state and an open action creator", () => {
     test("Then it should change registerNotification to true", () => {
       const initialState = {
-        registerNotification: false,
+        notification: {
+          open: false,
+          displayText: "",
+        },
         isUserLoggedIn: false,
       };
-      const expectedRegisterNotification = {
-        registerNotification: true,
+
+      const displayText = "test-text";
+
+      const expectedNotification = {
+        notification: {
+          open: true,
+          displayText: displayText,
+        },
         isUserLoggedIn: false,
       };
 
       const openRegisterNotificationReducerTest = uiReducer(
         initialState,
-        openRegisterNotificationActionCreator
+        openNotificationActionCreator(displayText)
       );
 
       expect(openRegisterNotificationReducerTest).toStrictEqual(
-        expectedRegisterNotification
+        expectedNotification
       );
     });
     describe("When its called with an initial state and an close action creator", () => {
       test("Then it should change registerNotification to false", () => {
+        const displayText = "test-text";
         const initialState = {
-          registerNotification: true,
+          notification: {
+            open: true,
+            displayText: displayText,
+          },
           isUserLoggedIn: false,
         };
-        const expectedRegisterNotification = {
-          registerNotification: false,
+        const expectedNotification = {
+          notification: {
+            open: false,
+            displayText: "",
+          },
           isUserLoggedIn: false,
         };
 
-        const closeRegisterNotificationReducerTest = uiReducer(
+        const closeNotificationReducerTest = uiReducer(
           initialState,
-          closeRegisterNotificationActionCreator
+          closeNotificationActionCreator()
         );
 
-        expect(closeRegisterNotificationReducerTest).toStrictEqual(
-          expectedRegisterNotification
+        expect(closeNotificationReducerTest).toStrictEqual(
+          expectedNotification
         );
       });
     });

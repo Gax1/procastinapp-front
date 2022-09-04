@@ -1,5 +1,9 @@
 import axios from "axios";
-import { Item, IUsersRepository, LoginUser } from "../interfaces/interfaces";
+import {
+  Item,
+  IUsersRepository,
+  RegistrationUser,
+} from "../interfaces/interfaces";
 
 export class UserRepository<T extends Item> implements IUsersRepository<T> {
   constructor(public url: string) {}
@@ -7,13 +11,14 @@ export class UserRepository<T extends Item> implements IUsersRepository<T> {
   sendRegistration = async (user: FormData) => {
     try {
       const { data } = await axios.post(`${this.url}/users/register`, user);
-      return data;
+
+      return await data;
     } catch (error) {
-      return error;
+      return await error;
     }
   };
 
-  sendLogin = async (user: LoginUser) => {
+  sendLogin = async (user: RegistrationUser) => {
     try {
       const { data } = await axios.post(`${this.url}/users/login`, user);
       return data;

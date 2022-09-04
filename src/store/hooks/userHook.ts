@@ -1,6 +1,7 @@
-import { LoginUser } from "../../interfaces/interfaces";
+import { RegistrationUser } from "../../interfaces/interfaces";
 import { UserRepository } from "../../repositories/UsersRepository";
-import { closeRegisterNotificationActionCreator } from "../features/uiSlice/uiSlice";
+import { openNotificationActionCreator } from "../features/uiSlice/uiSlice";
+import { loginUserActionCreator } from "../features/usersSlice/usersSlice";
 import { useAppDispatch } from "./hooks";
 
 export const useUsers = () => {
@@ -11,17 +12,25 @@ export const useUsers = () => {
   const dispatch = useAppDispatch();
 
   const register = async (formData: FormData) => {
-    await repoUsers.sendRegistration(formData);
-    dispatch(closeRegisterNotificationActionCreator);
-  };
-
-  const login = async (user: LoginUser) => {
     try {
-      const { token } = await repoUsers.sendLogin(user);
+      await repoUsers.sendRegistration(formData);
+      dispatch(openNotificationActionCreator("user register"));
     } catch (error) {
-      return error;
+      dispatch(openNotificationActionCreator("error in registration"));
     }
   };
 
-  return { register };
+  const login = async (userData: RegistrationUser) => {
+    try {
+      const { user } = await repoUsers.sendLogin(userData);
+
+      localStorage.setItem("token", user.token);
+
+      dispatch(loginUserActionCreator(user));
+    } catch (error) {
+      dispatch(openNotificationActionCreator("Error in login"));
+    }
+  };
+
+  return { register, login };
 };

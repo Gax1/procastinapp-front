@@ -3,7 +3,7 @@ import { LoginUser } from "../../../interfaces/interfaces";
 
 const initialUser: LoginUser = {
   username: "",
-  password: "",
+  id: "",
   token: "",
 };
 

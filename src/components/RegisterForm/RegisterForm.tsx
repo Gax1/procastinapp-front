@@ -22,7 +22,6 @@ const RegisterForm = (): JSX.Element => {
 
   const handleChangeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRegisterUser({ ...registerUser, img: event.target.files![0] });
-    console.log(registerUser.img);
   };
 
   const handleOnSubmit = async (event: SyntheticEvent) => {

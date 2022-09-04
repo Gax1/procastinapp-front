@@ -6,12 +6,29 @@ export const handlers = [
   rest.post(`${apiUrl}/users/login`, async (req, res, ctx) => {
     const mockTokenResponse = {
       user: {
+        username: "test-user",
+        id: "test-id",
         token: "test-token",
       },
     };
 
     const error = {
       message: "user or password invalid",
+    };
+
+    const { username } = await req.json();
+    const status = username === "" ? 400 : 201;
+    const response = username === "" ? error : mockTokenResponse;
+
+    return res(ctx.status(status), ctx.json(response));
+  }),
+  rest.post(`${apiUrl}/users/register`, async (req, res, ctx) => {
+    const mockTokenResponse = {
+      message: "User created",
+    };
+
+    const error = {
+      message: "Please try again later",
     };
 
     const { username } = await req.json();
