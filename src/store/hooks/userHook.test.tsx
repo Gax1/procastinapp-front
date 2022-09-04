@@ -3,6 +3,7 @@ import axios from "axios";
 import { Provider } from "react-redux";
 import { UserRepository } from "../../repositories/UsersRepository";
 import { openNotificationActionCreator } from "../features/uiSlice/uiSlice";
+import { logOutActionCreator } from "../features/usersSlice/usersSlice";
 import { store } from "../store";
 import { useUsers } from "./userHook";
 
@@ -130,6 +131,39 @@ describe("Given a custom hook login function", () => {
           openNotificationActionCreator("Error in login")
         );
       });
+    });
+  });
+});
+
+describe("Given a useUsers hook logOutUser function", () => {
+  describe("When its called", () => {
+    test("Then it should call the removeItem of the local storage", () => {
+      const {
+        result: {
+          current: { logOutUser },
+        },
+      } = renderHook(() => useUsers(), { wrapper: Wrapper });
+
+      jest.spyOn(Object.getPrototypeOf(window.localStorage), "removeItem");
+      Object.setPrototypeOf(window.localStorage.removeItem, jest.fn());
+
+      logOutUser();
+
+      expect(window.localStorage.removeItem).toHaveBeenCalledWith("token");
+    });
+    test("Then it shoul call the dispatch with a logout action creator", () => {
+      const {
+        result: {
+          current: { logOutUser },
+        },
+      } = renderHook(() => useUsers(), { wrapper: Wrapper });
+
+      jest.spyOn(Object.getPrototypeOf(window.localStorage), "removeItem");
+      Object.setPrototypeOf(window.localStorage.removeItem, jest.fn());
+
+      logOutUser();
+
+      expect(mockDispatch).toHaveBeenCalledWith(logOutActionCreator());
     });
   });
 });

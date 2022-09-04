@@ -11,7 +11,7 @@ describe("Given a header component", () => {
       render(
         <Provider store={store}>
           <ThemeProvider theme={theme}>
-            <Header logout={() => {}} />
+            <Header />
           </ThemeProvider>
         </Provider>
       );

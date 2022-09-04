@@ -1,7 +1,10 @@
 import { RegistrationUser } from "../../interfaces/interfaces";
 import { UserRepository } from "../../repositories/UsersRepository";
 import { openNotificationActionCreator } from "../features/uiSlice/uiSlice";
-import { loginUserActionCreator } from "../features/usersSlice/usersSlice";
+import {
+  loginUserActionCreator,
+  logOutActionCreator,
+} from "../features/usersSlice/usersSlice";
 import { useAppDispatch } from "./hooks";
 
 export const useUsers = () => {
@@ -32,7 +35,10 @@ export const useUsers = () => {
     }
   };
 
-  const logOutUser = async () => {};
+  const logOutUser = async () => {
+    dispatch(logOutActionCreator());
+    localStorage.removeItem("token");
+  };
 
-  return { register, login };
+  return { register, login, logOutUser };
 };
