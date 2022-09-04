@@ -17,9 +17,13 @@ const usersSlice = createSlice({
       token: action.payload.token,
       id: action.payload.id,
     }),
+    logOut: (previusUser) => (previusUser = initialUser),
   },
 });
 
 export const userReducer = usersSlice.reducer;
 
-export const { loginUser: loginUserActionCreator } = usersSlice.actions;
+export const {
+  loginUser: loginUserActionCreator,
+  logOut: logOutActionCreator,
+} = usersSlice.actions;

@@ -13,14 +13,8 @@ export const Header = ({ logout }: HeaderProps): JSX.Element => {
 
   return (
     <HeaderStyled>
-      <div className="header-container">
-        <h1 className="main-title">ProcastinapP</h1>
-        {isUserLoggedIn ? (
-          <FontAwesomeIcon icon={faUser} onClick={logout} />
-        ) : (
-          ""
-        )}
-      </div>
+      <h1 className="main-title">ProcastinapP</h1>
+      {isUserLoggedIn ? <FontAwesomeIcon icon={faUser} onClick={logout} /> : ""}
     </HeaderStyled>
   );
 };

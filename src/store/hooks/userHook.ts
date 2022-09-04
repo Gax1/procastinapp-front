@@ -32,5 +32,7 @@ export const useUsers = () => {
     }
   };
 
+  const logOutUser = async () => {};
+
   return { register, login };
 };
