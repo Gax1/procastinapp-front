@@ -1,6 +1,10 @@
 import { RegistrationUser } from "../../interfaces/interfaces";
 import { UserRepository } from "../../repositories/UsersRepository";
-import { openNotificationActionCreator } from "../features/uiSlice/uiSlice";
+import {
+  openNotificationActionCreator,
+  showLogInActionCreator,
+  showLogoutActionCreator,
+} from "../features/uiSlice/uiSlice";
 import {
   loginUserActionCreator,
   logOutActionCreator,
@@ -26,17 +30,19 @@ export const useUsers = () => {
   const login = async (userData: RegistrationUser) => {
     try {
       const { user } = await repoUsers.sendLogin(userData);
-
+      if (user instanceof Error) {
+      }
       localStorage.setItem("token", user.token);
-
+      dispatch(showLogInActionCreator());
       dispatch(loginUserActionCreator(user));
     } catch (error) {
       dispatch(openNotificationActionCreator("Error in login"));
     }
   };
 
-  const logOutUser = async () => {
+  const logOutUser = () => {
     dispatch(logOutActionCreator());
+    dispatch(showLogoutActionCreator());
     localStorage.removeItem("token");
   };
 

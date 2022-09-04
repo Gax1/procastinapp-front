@@ -1,4 +1,4 @@
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector } from "react-redux";
 import { useUsers } from "../../store/hooks/userHook";
@@ -13,7 +13,11 @@ export const Header = (): JSX.Element => {
     <HeaderStyled>
       <h1 className="main-title">ProcastinapP</h1>
       {isUserLoggedIn ? (
-        <FontAwesomeIcon icon={faUser} onClick={logOutUser} />
+        <FontAwesomeIcon
+          icon={faSignOut}
+          onClick={logOutUser}
+          className="logout-icon"
+        />
       ) : (
         ""
       )}
