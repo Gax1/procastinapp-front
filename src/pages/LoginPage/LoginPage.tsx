@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
 import { LoginForm } from "../../components/LoginForm/LoginForm";
 import { LoginPageStyled } from "./LoginPageStyled";
@@ -19,7 +20,9 @@ export const LoginPage = (): JSX.Element => {
         <LoginForm />
         <footer className="login-footer">
           <span className="text-container">You don`t have an account yet?</span>
-          <span className="text-container register-text">Click Here!</span>
+          <NavLink to={"/register"} className="text-container register-text">
+            Click Here!{" "}
+          </NavLink>
         </footer>
       </LoginPageStyled>
     </>
