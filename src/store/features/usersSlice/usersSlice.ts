@@ -17,7 +17,12 @@ const usersSlice = createSlice({
       token: action.payload.token,
       id: action.payload.id,
     }),
-    logOut: (previusUser) => (previusUser = initialUser),
+    logOut: (previusUser) => ({
+      ...previusUser,
+      username: "",
+      id: "",
+      token: "",
+    }),
   },
 });
 

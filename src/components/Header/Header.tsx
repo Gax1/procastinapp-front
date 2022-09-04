@@ -1,4 +1,4 @@
-import { faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector } from "react-redux";
 import { useUsers } from "../../store/hooks/userHook";

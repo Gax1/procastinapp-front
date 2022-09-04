@@ -30,8 +30,6 @@ export const useUsers = () => {
   const login = async (userData: RegistrationUser) => {
     try {
       const { user } = await repoUsers.sendLogin(userData);
-      if (user instanceof Error) {
-      }
       localStorage.setItem("token", user.token);
       dispatch(showLogInActionCreator());
       dispatch(loginUserActionCreator(user));
