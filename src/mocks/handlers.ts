@@ -22,19 +22,4 @@ export const handlers = [
 
     return res(ctx.status(status), ctx.json(response));
   }),
-  rest.post(`${apiUrl}/users/register`, async (req, res, ctx) => {
-    const mockTokenResponse = {
-      message: "User created",
-    };
-
-    const error = {
-      message: "Please try again later",
-    };
-
-    const { username } = await req.json();
-    const status = username === "" ? 400 : 201;
-    const response = username === "" ? error : mockTokenResponse;
-
-    return res(ctx.status(status), ctx.json(response));
-  }),
 ];
