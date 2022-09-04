@@ -1,32 +1,60 @@
 import { renderHook, waitFor } from "@testing-library/react";
+import axios from "axios";
 import { Provider } from "react-redux";
-import { WrapperProps } from "../../interfaces/interfaces";
 import { UserRepository } from "../../repositories/UsersRepository";
+import { openNotificationActionCreator } from "../features/uiSlice/uiSlice";
 import { store } from "../store";
 import { useUsers } from "./userHook";
 
+interface WrapperProps {
+  children: JSX.Element;
+}
+
+const Wrapper = ({ children }: WrapperProps): JSX.Element => (
+  <Provider store={store}>{children}</Provider>
+);
 jest.mock("../../repositories/UsersRepository");
 UserRepository as jest.Mock;
-UserRepository.prototype.sendRegistration = jest.fn().mockResolvedValue("");
 
 const mockDispatch = jest.fn();
 jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),
-  useAppDispatch: () => mockDispatch,
+  useDispatch: () => mockDispatch,
 }));
 
-describe("Given userHook with a registration function", () => {
-  const Wrapper = ({ children }: WrapperProps) => {
-    return <Provider store={store}>{children}</Provider>;
-  };
-  describe("When its called with a formData object", () => {
-    test("Then it should call the sendRegistration method", async () => {
-      const data = new FormData();
-      const user = {
-        username: "user",
-        password: "password",
-      };
-      data.append("user", JSON.stringify(user));
+describe("Given a user hook register function", () => {
+  describe("When its called with a valid user", () => {
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+    test("Then it should call the dispatch method", async () => {
+      UserRepository.prototype.sendRegistration = jest
+        .fn()
+        .mockResolvedValue("");
+      const post = jest.fn().mockResolvedValueOnce("");
+      axios.post = post;
+      const {
+        result: {
+          current: { register },
+        },
+      } = renderHook(() => useUsers(), { wrapper: Wrapper });
+
+      const userData = new FormData();
+
+      await register(userData);
+
+      await waitFor(() => {
+        expect(mockDispatch).toHaveBeenCalledWith(
+          openNotificationActionCreator("user register")
+        );
+      });
+    });
+    test("Then it shoud call the dispatch", async () => {
+      UserRepository.prototype.sendRegistration = jest
+        .fn()
+        .mockRejectedValue("");
+      const post = jest.fn().mockRejectedValue(new Error());
+      axios.post = post;
 
       const {
         result: {
@@ -34,10 +62,73 @@ describe("Given userHook with a registration function", () => {
         },
       } = renderHook(() => useUsers(), { wrapper: Wrapper });
 
-      await register(data);
+      const dataUser = new FormData();
+
+      await register(dataUser);
 
       await waitFor(() => {
-        expect(UserRepository.prototype.sendRegistration).toHaveBeenCalled();
+        expect(mockDispatch).toHaveBeenCalledWith(
+          openNotificationActionCreator("error in registration")
+        );
+      });
+    });
+  });
+});
+
+describe("Given a custom hook login function", () => {
+  const validUser = {
+    username: "test-username",
+    password: "user-password",
+  };
+  describe("When its called with a valid user", () => {
+    test("Then iot should call the method set item of the local store", async () => {
+      const response = {
+        user: {
+          username: "test-username",
+          token: "test-token",
+          id: "test-id",
+        },
+      };
+      UserRepository.prototype.sendLogin = jest
+        .fn()
+        .mockResolvedValueOnce(response);
+
+      jest.spyOn(Object.getPrototypeOf(window.localStorage), "setItem");
+      Object.setPrototypeOf(window.localStorage.setItem, jest.fn());
+      const {
+        result: {
+          current: { login },
+        },
+      } = renderHook(() => useUsers(), { wrapper: Wrapper });
+
+      await login(validUser);
+
+      await waitFor(() => {
+        expect(window.localStorage.setItem).toHaveBeenCalledWith(
+          "token",
+          response.user.token
+        );
+      });
+    });
+  });
+  describe("When it receives an error", () => {
+    test("Then it should call the dipsatch method", async () => {
+      UserRepository.prototype.sendLogin = jest.fn().mockRejectedValue("error");
+
+      jest.spyOn(Object.getPrototypeOf(window.localStorage), "setItem");
+      Object.setPrototypeOf(window.localStorage.setItem, jest.fn());
+      const {
+        result: {
+          current: { login },
+        },
+      } = renderHook(() => useUsers(), { wrapper: Wrapper });
+
+      await login(validUser);
+
+      await waitFor(() => {
+        expect(mockDispatch).toHaveBeenCalledWith(
+          openNotificationActionCreator("Error in login")
+        );
       });
     });
   });

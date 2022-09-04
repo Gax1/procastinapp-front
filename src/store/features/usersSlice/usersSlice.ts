@@ -1,18 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { LoginUser } from "../../../interfaces/interfaces";
 
 const initialUser: LoginUser = {
   username: "",
-  password: "",
-  img: "",
+  id: "",
+  token: "",
 };
 
 const usersSlice = createSlice({
   name: "users",
   initialState: initialUser,
-  reducers: {},
+  reducers: {
+    loginUser: (previusUser, action: PayloadAction<LoginUser>) => ({
+      ...previusUser,
+      username: action.payload.username,
+      token: action.payload.token,
+      id: action.payload.id,
+    }),
+  },
 });
 
 export const userReducer = usersSlice.reducer;
 
-export const {} = usersSlice.actions;
+export const { loginUser: loginUserActionCreator } = usersSlice.actions;

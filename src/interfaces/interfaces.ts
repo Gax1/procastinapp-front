@@ -1,7 +1,7 @@
-export interface LoginUser {
+export interface LoginUser extends Item {
   username: string;
-  password: string;
-  img?: string;
+  id: string;
+  token: string;
 }
 
 export interface Item {
@@ -9,7 +9,10 @@ export interface Item {
 }
 
 export interface UiState {
-  registerNotification: boolean;
+  notification: {
+    open: boolean;
+    displayText: string;
+  };
   isUserLoggedIn: boolean;
 }
 

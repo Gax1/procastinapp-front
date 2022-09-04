@@ -6,6 +6,8 @@ export const handlers = [
   rest.post(`${apiUrl}/users/login`, async (req, res, ctx) => {
     const mockTokenResponse = {
       user: {
+        username: "test-user",
+        id: "test-id",
         token: "test-token",
       },
     };
