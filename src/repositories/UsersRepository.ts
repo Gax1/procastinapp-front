@@ -12,9 +12,9 @@ export class UserRepository<T extends Item> implements IUsersRepository<T> {
     try {
       const { data } = await axios.post(`${this.url}/users/register`, user);
 
-      return await data;
+      return data;
     } catch (error) {
-      return await error;
+      return error;
     }
   };
 
