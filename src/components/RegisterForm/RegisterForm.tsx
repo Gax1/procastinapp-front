@@ -86,6 +86,7 @@ const RegisterForm = (): JSX.Element => {
             onChange={handleChangeFile}
             data-testid="img"
           />
+
           <Button buttonText="Register" disabled={isDisable} />
         </form>
       </div>

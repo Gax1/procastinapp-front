@@ -18,6 +18,7 @@ export const RegisterPage = (): JSX.Element => {
             </NavLink>
           </span>
           <h2 className="page-title">Register</h2>
+          <span>&nbsp; </span>
         </div>
         <RegisterForm />
       </RegisterPageStyled>

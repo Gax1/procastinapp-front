@@ -36,6 +36,7 @@ export const LoginForm = (): JSX.Element => {
         id="username"
         placeholder="here goes youre username..."
         onChange={handleChange}
+        value={loginUser.username}
       />
       <label htmlFor="password">Password:</label>
       <input
@@ -44,6 +45,7 @@ export const LoginForm = (): JSX.Element => {
         id="password"
         placeholder="here goes youre password..."
         onChange={handleChange}
+        value={loginUser.password}
       />
       <Button buttonText="Login" disabled={disableButton} />
     </LoginFormStyled>
