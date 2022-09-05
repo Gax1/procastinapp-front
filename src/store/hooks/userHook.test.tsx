@@ -46,16 +46,14 @@ describe("Given a user hook register function", () => {
 
       await waitFor(() => {
         expect(mockDispatch).toHaveBeenCalledWith(
-          openNotificationActionCreator("user register")
+          openNotificationActionCreator("Succeded: user register")
         );
       });
     });
     test("Then it shoud call the dispatch", async () => {
       UserRepository.prototype.sendRegistration = jest
         .fn()
-        .mockRejectedValue("");
-      const post = jest.fn().mockRejectedValue(new Error());
-      axios.post = post;
+        .mockResolvedValue(new Error());
 
       const {
         result: {
@@ -69,7 +67,7 @@ describe("Given a user hook register function", () => {
 
       await waitFor(() => {
         expect(mockDispatch).toHaveBeenCalledWith(
-          openNotificationActionCreator("error in registration")
+          openNotificationActionCreator("Error in registration")
         );
       });
     });

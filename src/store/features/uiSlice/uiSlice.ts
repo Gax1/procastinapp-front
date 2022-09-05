@@ -6,7 +6,7 @@ const initialUiState: UiState = {
     open: false,
     displayText: "",
   },
-  isUserLoggedIn: false,
+  isUserLoggedIn: true,
 };
 
 const uiSlice = createSlice({
