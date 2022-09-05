@@ -10,7 +10,7 @@ export const ButtonStyled = styled.button`
   border: none;
   font-family: inherit;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1000px) {
     width: 360px;
     height: 60px;
   }
