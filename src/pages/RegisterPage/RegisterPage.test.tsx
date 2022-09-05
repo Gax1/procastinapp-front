@@ -1,15 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
-import { WrapperProps } from "../../interfaces/interfaces";
-import { store } from "../../store/store";
-import { theme } from "../../themes/theme";
+import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
 import { RegisterPage } from "./RegisterPage";
-
-const Wrapper = ({ children }: WrapperProps) => {
-  return <Provider store={store}>{children}</Provider>;
-};
 
 describe("Given a registerPage component", () => {
   describe("When rendered", () => {
@@ -17,13 +8,9 @@ describe("Given a registerPage component", () => {
       const pageTitle = "Register";
 
       render(
-        <BrowserRouter>
-          <Wrapper>
-            <ThemeProvider theme={theme}>
-              <RegisterPage />
-            </ThemeProvider>
-          </Wrapper>
-        </BrowserRouter>
+        <Wrapper>
+          <RegisterPage />
+        </Wrapper>
       );
 
       const title = screen.getByRole("heading", { name: pageTitle });
@@ -33,13 +20,9 @@ describe("Given a registerPage component", () => {
     test("Then it should show a header with a title", () => {
       const mainHeaderTitle = "ProcastinapP";
       render(
-        <BrowserRouter>
-          <Wrapper>
-            <ThemeProvider theme={theme}>
-              <RegisterPage />
-            </ThemeProvider>
-          </Wrapper>
-        </BrowserRouter>
+        <Wrapper>
+          <RegisterPage />
+        </Wrapper>
       );
 
       const mainTitle = screen.getByRole("heading", { name: mainHeaderTitle });
@@ -50,13 +33,9 @@ describe("Given a registerPage component", () => {
       const formTextId = "formRegister";
 
       render(
-        <BrowserRouter>
-          <Wrapper>
-            <ThemeProvider theme={theme}>
-              <RegisterPage />
-            </ThemeProvider>
-          </Wrapper>
-        </BrowserRouter>
+        <Wrapper>
+          <RegisterPage />
+        </Wrapper>
       );
 
       const form = screen.getByTestId(formTextId);
