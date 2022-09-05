@@ -2,7 +2,13 @@ import { render, screen } from "@testing-library/react";
 import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
 import { Header } from "./Header";
 
-const mockUseSelector = jest.fn().mockReturnValue({ isUserLoggedIn: true });
+const mockUseSelector = {
+  notification: {
+    open: false,
+    displayText: "",
+  },
+  isUserLoggedIn: true,
+};
 jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),
   useSelector: () => mockUseSelector,
