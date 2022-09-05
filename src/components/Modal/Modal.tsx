@@ -12,7 +12,6 @@ export const Modal = (): JSX.Element => {
     (state: RootState) => state.ui.notification
   );
   const displayType = displayText.startsWith("Succeded");
-  debugger;
   const closeModal = () => {
     dispatch(closeNotificationActionCreator());
   };
@@ -26,6 +25,7 @@ export const Modal = (): JSX.Element => {
               icon={faTimesCircle}
               className="close-modal-icon"
               onClick={closeModal}
+              data-testid="close-icon"
             />
             <span>{displayText}</span>
           </div>
@@ -38,6 +38,7 @@ export const Modal = (): JSX.Element => {
               icon={faTimesCircle}
               className="close-modal-icon"
               onClick={closeModal}
+              data-testid="close-icon"
             />
             <span>{displayText}</span>
           </div>
