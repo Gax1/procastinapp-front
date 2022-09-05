@@ -1,19 +1,11 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { ThemeProvider } from "styled-components";
-import { WrapperProps } from "../../interfaces/interfaces";
-import { store } from "../../store/store";
-import { theme } from "../../themes/theme";
 import RegisterForm from "./RegisterForm";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import axios from "axios";
+import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
 
 axios.post = jest.fn();
-
-const Wrapper = ({ children }: WrapperProps) => {
-  return <Provider store={store}>{children}</Provider>;
-};
 
 describe("Given a register form component", () => {
   const inputUsernamePlaceHolder = "here goes youre username...";
@@ -24,9 +16,7 @@ describe("Given a register form component", () => {
     test("Then it should show 3 inputs", () => {
       render(
         <Wrapper>
-          <ThemeProvider theme={theme}>
-            <RegisterForm />
-          </ThemeProvider>
+          <RegisterForm />
         </Wrapper>
       );
       const inputUsername = screen.getByPlaceholderText(
@@ -44,9 +34,7 @@ describe("Given a register form component", () => {
     test("Then it should show two buttons", () => {
       render(
         <Wrapper>
-          <ThemeProvider theme={theme}>
-            <RegisterForm />
-          </ThemeProvider>
+          <RegisterForm />
         </Wrapper>
       );
       const buttons = screen.getAllByRole("button");
@@ -60,9 +48,7 @@ describe("Given a register form component", () => {
   test("Then the button should be dissabled", () => {
     render(
       <Wrapper>
-        <ThemeProvider theme={theme}>
-          <RegisterForm />
-        </ThemeProvider>
+        <RegisterForm />
       </Wrapper>
     );
 
@@ -87,9 +73,7 @@ describe("Given a register form component", () => {
     };
     render(
       <Wrapper>
-        <ThemeProvider theme={theme}>
-          <RegisterForm />
-        </ThemeProvider>
+        <RegisterForm />
       </Wrapper>
     );
 

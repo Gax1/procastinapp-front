@@ -1,15 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
-import { WrapperProps } from "../../interfaces/interfaces";
-import { store } from "../../store/store";
-import { theme } from "../../themes/theme";
+import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
 import { LoginPage } from "./LoginPage";
-
-const Wrapper = ({ children }: WrapperProps) => {
-  return <Provider store={store}>{children}</Provider>;
-};
 
 describe("Given a LoginPage component", () => {
   describe("When rendered", () => {
@@ -17,13 +8,9 @@ describe("Given a LoginPage component", () => {
       const mainTitleText = "ProcastinapP";
 
       render(
-        <BrowserRouter>
-          <Wrapper>
-            <ThemeProvider theme={theme}>
-              <LoginPage />
-            </ThemeProvider>
-          </Wrapper>
-        </BrowserRouter>
+        <Wrapper>
+          <LoginPage />
+        </Wrapper>
       );
       const mainTitle = screen.getByRole("heading", { name: mainTitleText });
 
@@ -33,13 +20,9 @@ describe("Given a LoginPage component", () => {
       const inputUsernamePlaceHolder = "here goes youre username...";
       const placeHolderPassword = "here goes youre password...";
       render(
-        <BrowserRouter>
-          <Wrapper>
-            <ThemeProvider theme={theme}>
-              <LoginPage />
-            </ThemeProvider>
-          </Wrapper>
-        </BrowserRouter>
+        <Wrapper>
+          <LoginPage />
+        </Wrapper>
       );
       const inputUsername = screen.getByPlaceholderText(
         inputUsernamePlaceHolder

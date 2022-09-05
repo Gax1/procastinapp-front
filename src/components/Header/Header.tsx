@@ -12,9 +12,9 @@ export const Header = (): JSX.Element => {
 
   return (
     <HeaderStyled>
-      {isUserLoggedIn ? <span>&nbsp; </span> : ""}
+      {isUserLoggedIn && <span>&nbsp; </span>}
       <h1 className="main-title">ProcastinapP</h1>
-      {isUserLoggedIn ? (
+      {isUserLoggedIn && (
         <NavLink to={"/login"}>
           <FontAwesomeIcon
             icon={faSignOut}
@@ -22,8 +22,6 @@ export const Header = (): JSX.Element => {
             className="logout-icon"
           />
         </NavLink>
-      ) : (
-        ""
       )}
     </HeaderStyled>
   );

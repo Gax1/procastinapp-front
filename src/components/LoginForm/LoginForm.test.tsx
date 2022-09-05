@@ -1,15 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { ThemeProvider } from "styled-components";
-import { WrapperProps } from "../../interfaces/interfaces";
-import { store } from "../../store/store";
-import { theme } from "../../themes/theme";
 import { LoginForm } from "./LoginForm";
 import userEvent from "@testing-library/user-event";
-
-const Wrapper = ({ children }: WrapperProps) => (
-  <Provider store={store}>{children}</Provider>
-);
+import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
 
 const mockDispatch = jest.fn();
 jest.mock("react-redux", () => ({
@@ -24,9 +16,7 @@ describe("Given a LoginForm component", () => {
     test("Then it should show two inputs and a button", () => {
       render(
         <Wrapper>
-          <ThemeProvider theme={theme}>
-            <LoginForm />
-          </ThemeProvider>
+          <LoginForm />
         </Wrapper>
       );
 
@@ -52,9 +42,7 @@ describe("Given a LoginForm component", () => {
 
       render(
         <Wrapper>
-          <ThemeProvider theme={theme}>
-            <LoginForm />
-          </ThemeProvider>
+          <LoginForm />
         </Wrapper>
       );
 
