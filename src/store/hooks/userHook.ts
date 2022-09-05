@@ -19,12 +19,13 @@ export const useUsers = () => {
   const dispatch = useAppDispatch();
 
   const register = async (formData: FormData) => {
-    try {
-      await repoUsers.sendRegistration(formData);
-      dispatch(openNotificationActionCreator("user register"));
-    } catch (error) {
-      dispatch(openNotificationActionCreator("error in registration"));
+    const response = await repoUsers.sendRegistration(formData);
+    if (response instanceof Error) {
+      dispatch(openNotificationActionCreator("Error in registration"));
+      return;
     }
+    dispatch(openNotificationActionCreator("Succeded: user register"));
+    return;
   };
 
   const login = async (userData: RegistrationUser) => {

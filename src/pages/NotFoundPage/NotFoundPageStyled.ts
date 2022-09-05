@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const NotFoundPageStyled = styled.div`
   background-color: ${(props) => props.theme.colors.secondaryColor};
-  height: 80vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
