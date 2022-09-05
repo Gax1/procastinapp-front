@@ -25,7 +25,6 @@ export const useUsers = () => {
       return;
     }
     dispatch(openNotificationActionCreator("Succeded: user register"));
-    return;
   };
 
   const login = async (userData: RegistrationUser) => {
@@ -34,6 +33,7 @@ export const useUsers = () => {
       localStorage.setItem("token", user.token);
       dispatch(showLogInActionCreator());
       dispatch(loginUserActionCreator(user));
+      dispatch(openNotificationActionCreator("Succeded: youre logged in"));
     } catch (error) {
       dispatch(openNotificationActionCreator("Error in login"));
     }

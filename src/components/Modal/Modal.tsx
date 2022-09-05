@@ -11,9 +11,8 @@ export const Modal = (): JSX.Element => {
   const { displayText, open } = useAppSelector(
     (state: RootState) => state.ui.notification
   );
-
   const displayType = displayText.startsWith("Succeded");
-
+  debugger;
   const closeModal = () => {
     dispatch(closeNotificationActionCreator());
   };

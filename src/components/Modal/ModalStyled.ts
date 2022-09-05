@@ -29,9 +29,9 @@ export const ModalStyled = styled.div`
     cursor: pointer;
   }
   .success-modal {
-    background-color: rgb(28, 219, 60, 0.6);
+    background-color: rgb(28, 219, 60);
   }
   .error-modal {
-    background-color: rgb(255, 0, 0, 0.8);
+    background-color: rgb(255, 0, 0);
   }
 `;
