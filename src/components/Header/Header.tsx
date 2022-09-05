@@ -12,7 +12,7 @@ export const Header = (): JSX.Element => {
 
   return (
     <HeaderStyled>
-      <span>&nbsp; </span>
+      {isUserLoggedIn ? <span>&nbsp; </span> : ""}
       <h1 className="main-title">ProcastinapP</h1>
       {isUserLoggedIn ? (
         <NavLink to={"/login"}>
