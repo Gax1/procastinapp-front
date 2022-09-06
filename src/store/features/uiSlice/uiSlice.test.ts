@@ -1,3 +1,4 @@
+import { UiState } from "../../../interfaces/interfaces";
 import {
   closeNotificationActionCreator,
   openNotificationActionCreator,
@@ -9,20 +10,22 @@ import {
 describe("Given a uiReducer", () => {
   describe("When its called with an initial state and an open action creator", () => {
     test("Then it should change registerNotification to true", () => {
-      const initialState = {
+      const initialState: UiState = {
         notification: {
           open: false,
           displayText: "",
+          isLoadding: false,
         },
         isUserLoggedIn: false,
       };
 
       const displayText = "test-text";
 
-      const expectedNotification = {
+      const expectedNotification: UiState = {
         notification: {
           open: true,
           displayText: displayText,
+          isLoadding: false,
         },
         isUserLoggedIn: false,
       };
@@ -39,10 +42,11 @@ describe("Given a uiReducer", () => {
     describe("When its called with an initial state and an close action creator", () => {
       test("Then it should change registerNotification to false", () => {
         const displayText = "test-text";
-        const initialState = {
+        const initialState: UiState = {
           notification: {
             open: true,
             displayText: displayText,
+            isLoadding: false,
           },
           isUserLoggedIn: false,
         };
@@ -50,6 +54,7 @@ describe("Given a uiReducer", () => {
           notification: {
             open: false,
             displayText: "",
+            isLoadding: false,
           },
           isUserLoggedIn: false,
         };
@@ -64,10 +69,11 @@ describe("Given a uiReducer", () => {
         );
       });
       test("Then it should the isUserLoggedIn to true", () => {
-        const initialState = {
+        const initialState: UiState = {
           notification: {
             open: false,
             displayText: "",
+            isLoadding: false,
           },
           isUserLoggedIn: false,
         };
@@ -77,10 +83,11 @@ describe("Given a uiReducer", () => {
         expect(showLoginTest.isUserLoggedIn).toStrictEqual(true);
       });
       test("The it should change the isUserLogged in to false", () => {
-        const initialState = {
+        const initialState: UiState = {
           notification: {
             open: false,
             displayText: "",
+            isLoadding: false,
           },
           isUserLoggedIn: true,
         };

@@ -12,6 +12,7 @@ export interface UiState {
   notification: {
     open: boolean;
     displayText: string;
+    isLoadding: boolean;
   };
   isUserLoggedIn: boolean;
 }

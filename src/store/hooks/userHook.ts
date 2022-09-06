@@ -1,6 +1,7 @@
 import { RegistrationUser } from "../../interfaces/interfaces";
 import { UserRepository } from "../../repositories/UsersRepository";
 import {
+  openLoadingActionCreator,
   openNotificationActionCreator,
   showLogInActionCreator,
   showLogoutActionCreator,
@@ -29,6 +30,7 @@ export const useUsers = () => {
 
   const login = async (userData: RegistrationUser) => {
     try {
+      dispatch(openLoadingActionCreator());
       const { user } = await repoUsers.sendLogin(userData);
       localStorage.setItem("token", user.token);
       dispatch(showLogInActionCreator());
