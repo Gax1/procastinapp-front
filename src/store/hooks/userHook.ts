@@ -20,6 +20,7 @@ export const useUsers = () => {
   const dispatch = useAppDispatch();
 
   const register = async (formData: FormData) => {
+    dispatch(openLoadingActionCreator());
     const response = await repoUsers.sendRegistration(formData);
     if (response instanceof Error) {
       dispatch(openNotificationActionCreator("Error in registration"));
