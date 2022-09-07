@@ -12,10 +12,10 @@ export const useTasks = () => {
 
   const dispatch = useAppDispatch();
 
-  const getDay = async (id: string, date: string) => {
+  const getDay = async (id: string, date: string, token: string) => {
     try {
       dispatch(openLoadingActionCreator());
-      const { tasks } = await repoTasks.getDay(id, date);
+      const { tasks } = await repoTasks.getDay(id, date, token);
       if (tasks.length !== 0) {
         dispatch(openNotificationActionCreator("Succeded: tasks uploaded"));
       }

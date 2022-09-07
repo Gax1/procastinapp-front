@@ -17,12 +17,14 @@ describe("Given a Tasks Repository", () => {
     },
   ];
   const date = "09/05/2022";
+  const token = "test-token";
+
   describe("Given a getDay method", () => {
     describe("When its called with a valid id and date", () => {
       test("Then it should return an array of task", async () => {
         const id = "test-id";
 
-        const tasks = await tasksRepo.getDay(id, date);
+        const tasks = await tasksRepo.getDay(id, date, token);
 
         expect(task).toStrictEqual(tasks);
       });
@@ -31,7 +33,7 @@ describe("Given a Tasks Repository", () => {
       test("Then it should return an error", async () => {
         const id = "";
 
-        const tasks = await tasksRepo.getDay(id, date);
+        const tasks = await tasksRepo.getDay(id, date, token);
 
         expect(tasks).toBeInstanceOf(Error);
       });

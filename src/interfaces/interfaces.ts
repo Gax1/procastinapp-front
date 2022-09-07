@@ -23,7 +23,7 @@ export interface IUsersRepository<T extends Item> {
 }
 
 export interface ITasksRepository<T extends Item> {
-  getDay: (id: string, date: string) => Promise<T[]>;
+  getDay: (id: string, date: string, token: string) => Promise<T[]>;
 }
 
 export interface RegistrationUser {
