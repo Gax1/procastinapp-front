@@ -1,5 +1,6 @@
 import { UiState } from "../../../interfaces/interfaces";
 import {
+  closeLoadingActionCreator,
   closeNotificationActionCreator,
   openNotificationActionCreator,
   showLogInActionCreator,
@@ -97,6 +98,22 @@ describe("Given a uiReducer", () => {
         );
 
         expect(showLogoutTest.isUserLoggedIn).toStrictEqual(false);
+      });
+      test("Then it should change isLoadding to false", () => {
+        const initialState: UiState = {
+          notification: {
+            open: false,
+            displayText: "",
+            isLoadding: false,
+          },
+          isUserLoggedIn: true,
+        };
+        const notification = uiReducer(
+          initialState,
+          closeLoadingActionCreator()
+        );
+
+        expect(notification.notification.isLoadding).toStrictEqual(false);
       });
     });
   });

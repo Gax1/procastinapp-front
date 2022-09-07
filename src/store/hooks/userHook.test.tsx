@@ -1,21 +1,18 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import axios from "axios";
-import { Provider } from "react-redux";
 import { UserRepository } from "../../repositories/UsersRepository";
+import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
 import { openNotificationActionCreator } from "../features/uiSlice/uiSlice";
 import { logOutActionCreator } from "../features/usersSlice/usersSlice";
-import { store } from "../store";
 import { useUsers } from "./userHook";
 
-interface WrapperProps {
-  children: JSX.Element;
-}
-
-const Wrapper = ({ children }: WrapperProps): JSX.Element => (
-  <Provider store={store}>{children}</Provider>
-);
 jest.mock("../../repositories/UsersRepository");
 UserRepository as jest.Mock;
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => jest.fn(),
+}));
 
 const mockDispatch = jest.fn();
 jest.mock("react-redux", () => ({

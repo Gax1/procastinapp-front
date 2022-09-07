@@ -7,7 +7,7 @@ const initialUiState: UiState = {
     displayText: "",
     isLoadding: false,
   },
-  isUserLoggedIn: true,
+  isUserLoggedIn: false,
 };
 
 const uiSlice = createSlice({
@@ -20,6 +20,14 @@ const uiSlice = createSlice({
         open: false,
         displayText: "",
         isLoadding: true,
+      },
+    }),
+    closeLoading: (previusUi: UiState) => ({
+      ...previusUi,
+      notification: {
+        open: false,
+        displayText: "",
+        isLoadding: false,
       },
     }),
     openNotification: (previusUi: UiState, action: PayloadAction<string>) => ({
@@ -54,6 +62,7 @@ export const uiReducer = uiSlice.reducer;
 
 export const {
   openLoading: openLoadingActionCreator,
+  closeLoading: closeLoadingActionCreator,
   openNotification: openNotificationActionCreator,
   closeNotification: closeNotificationActionCreator,
   showLogout: showLogoutActionCreator,
