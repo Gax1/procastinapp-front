@@ -7,9 +7,9 @@ const tasksSlice = createSlice({
   name: "tasks",
   initialState: initialTasksState,
   reducers: {
-    deleteAll: (previusTasks) => (previusTasks = []),
+    deleteAll: (previusTasks) => [],
     uploadDayTasks: (previusTasks, action: PayloadAction<Task[]>) =>
-      (previusTasks = action.payload),
+      action.payload,
   },
 });
 
