@@ -13,7 +13,7 @@ beforeEach(() => {
   jest.clearAllMocks();
 });
 
-const task = [
+const expectedTask = [
   {
     date: "09/05/2022",
     description: "test-description",
@@ -40,7 +40,7 @@ describe("Given a useTasks getDay function", () => {
 
       const tasks = await getDay(id, date, token);
 
-      expect(tasks).toStrictEqual(task);
+      expect(tasks).toStrictEqual(expectedTask);
     });
   });
   describe("When it called with an invalid id", () => {

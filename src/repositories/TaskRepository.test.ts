@@ -1,21 +1,22 @@
-import { Task } from "../interfaces/interfaces";
 import { TasksRepository } from "./TasksRepository";
 
 const url = process.env.REACT_APP_APIURL as string;
 const tasksRepo = new TasksRepository(url);
 
 describe("Given a Tasks Repository", () => {
-  const task: Task[] = [
-    {
-      date: "09/05/2022",
-      description: "test-description",
-      id: "test-id",
-      img: "test-img",
-      importance: "very",
-      owner: "test-idOwner",
-      title: "title-test",
-    },
-  ];
+  const task = {
+    tasks: [
+      {
+        date: "09/05/2022",
+        description: "test-description",
+        id: "test-id",
+        img: "test-img",
+        importance: "very",
+        owner: "test-idOwner",
+        title: "title-test",
+      },
+    ],
+  };
   const date = "09/05/2022";
   const token = "test-token";
 
