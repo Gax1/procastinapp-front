@@ -19,6 +19,11 @@ export interface UiState {
 
 export interface IUsersRepository<T extends Item> {
   sendRegistration: (user: FormData) => Promise<T>;
+  sendLogin: (user: RegistrationUser) => Promise<T>;
+}
+
+export interface ITasksRepository<T extends Item> {
+  getDay: (id: string, date: string) => Promise<T[]>;
 }
 
 export interface RegistrationUser {
@@ -30,4 +35,14 @@ export interface RegistrationUser {
 
 export interface WrapperProps {
   children: JSX.Element;
+}
+
+export interface Task {
+  id: string;
+  title: string;
+  description: string;
+  importance: string;
+  date: string;
+  img: string;
+  owner: string;
 }
