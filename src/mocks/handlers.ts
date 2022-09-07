@@ -41,10 +41,12 @@ export const handlers = [
     };
 
     const id = await req.url.searchParams.get("id");
+    const date = await req.url.searchParams.get("date");
 
     const status = id === "" ? 404 : 200;
-    const response = id === "" ? error : task;
+    let response = id === "" ? error : task;
+    response = date === "" ? [] : task;
 
-    return res(ctx.status(status), ctx.json(response));
+    return res(ctx.status(status), ctx.json({ tasks: response }));
   }),
 ];
