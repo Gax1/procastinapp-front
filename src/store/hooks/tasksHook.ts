@@ -1,4 +1,5 @@
 import { TasksRepository } from "../../repositories/TasksRepository";
+import { uploadDayTasksActionCreator } from "../features/tasksSlice/tasksSlice";
 import {
   openLoadingActionCreator,
   openNotificationActionCreator,
@@ -17,11 +18,13 @@ export const useTasks = () => {
       dispatch(openLoadingActionCreator());
       const { tasks } = await repoTasks.getDay(id, date, token);
       if (tasks.length !== 0) {
+        dispatch(uploadDayTasksActionCreator(tasks));
         dispatch(openNotificationActionCreator("Succeded: tasks uploaded"));
       }
       dispatch(
         openNotificationActionCreator("Error: there is no tasks for today")
       );
+
       return tasks;
     } catch (error) {
       dispatch(openNotificationActionCreator("Error uploading the tasks"));
