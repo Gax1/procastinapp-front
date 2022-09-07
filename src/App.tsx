@@ -14,14 +14,14 @@ function App() {
   );
   return (
     <>
-      {/* {isLoadding && <Loading />}
+      {isLoadding && <Loading />}
       <Routes>
         <Route path="/" element={<Navigate to={"/login"} />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/my-day" element={<DayTasksPage />} />
         <Route path="*" element={<NotFoundPage />} />
-      </Routes> */}
-      <DayTasksPage />
+      </Routes>
     </>
   );
 }

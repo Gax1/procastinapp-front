@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { RegistrationUser } from "../../interfaces/interfaces";
 import { UserRepository } from "../../repositories/UsersRepository";
 import {
+  closeNotificationActionCreator,
   openLoadingActionCreator,
   openNotificationActionCreator,
   showLogInActionCreator,
@@ -39,7 +40,8 @@ export const useUsers = () => {
       localStorage.setItem("token", user.token);
       dispatch(showLogInActionCreator());
       dispatch(loginUserActionCreator(user));
-      dispatch(openNotificationActionCreator("Succeded: youre logged in"));
+      dispatch(closeNotificationActionCreator());
+      navigate("/my-day");
     } catch (error) {
       dispatch(openNotificationActionCreator("Error in login"));
     }
@@ -49,6 +51,7 @@ export const useUsers = () => {
     dispatch(logOutActionCreator());
     dispatch(showLogoutActionCreator());
     localStorage.removeItem("token");
+    navigate("/login");
   };
 
   return { register, login, logOutUser };
