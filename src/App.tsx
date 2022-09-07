@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Loading } from "./components/Loading/Loading";
+import { DayTasksPage } from "./pages/DayTasksPage/DayTasksPage";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 import { RegisterPage } from "./pages/RegisterPage/RegisterPage";
@@ -13,13 +14,14 @@ function App() {
   );
   return (
     <>
-      {isLoadding && <Loading />}
+      {/* {isLoadding && <Loading />}
       <Routes>
         <Route path="/" element={<Navigate to={"/login"} />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      </Routes> */}
+      <DayTasksPage />
     </>
   );
 }
