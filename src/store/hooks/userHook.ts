@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { RegistrationUser } from "../../interfaces/interfaces";
 import { UserRepository } from "../../repositories/UsersRepository";
 import {
@@ -18,6 +19,7 @@ export const useUsers = () => {
   const repoUsers = new UserRepository(url);
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const register = async (formData: FormData) => {
     dispatch(openLoadingActionCreator());
@@ -27,6 +29,7 @@ export const useUsers = () => {
       return;
     }
     dispatch(openNotificationActionCreator("Succeded: user register"));
+    navigate("/login");
   };
 
   const login = async (userData: RegistrationUser) => {
