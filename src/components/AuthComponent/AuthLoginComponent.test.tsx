@@ -21,12 +21,14 @@ describe("Given an AuthComponent", () => {
         </Wrapper>
       );
 
-      expect(mockedNavigate).toHaveBeenCalled();
+      expect(mockedNavigate).toHaveBeenCalledWith("/login");
     });
     test("Then is the isLoggedIn is true", () => {
       render(
         <MockedWrapper>
-          <h1>Test title</h1>
+          <AuthLogin>
+            <h1>Test title</h1>
+          </AuthLogin>
         </MockedWrapper>
       );
 
