@@ -1,5 +1,5 @@
-import { render } from "@testing-library/react";
-import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
+import { render, screen } from "@testing-library/react";
+import { MockedWrapper, Wrapper } from "../../test-utils/Wrapper/Wrapper";
 import { Header } from "../Header/Header";
 import AuthLogin from "./AuthLoginComponent";
 
@@ -15,11 +15,24 @@ describe("Given an AuthComponent", () => {
     test("Then should call the navigation component", () => {
       render(
         <Wrapper>
-          <AuthLogin children={<Header />} />
+          <AuthLogin>
+            <Header />
+          </AuthLogin>
         </Wrapper>
       );
 
       expect(mockedNavigate).toHaveBeenCalled();
+    });
+    test("Then is the isLoggedIn is true", () => {
+      render(
+        <MockedWrapper>
+          <h1>Test title</h1>
+        </MockedWrapper>
+      );
+
+      const title = screen.getByRole("heading", { name: "Test title" });
+
+      expect(title).toBeInTheDocument();
     });
   });
 });
