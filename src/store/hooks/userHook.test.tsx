@@ -101,8 +101,8 @@ describe("Given a custom hook login function", () => {
 
       await waitFor(() => {
         expect(window.localStorage.setItem).toHaveBeenCalledWith(
-          "token",
-          response.user.token
+          "user",
+          JSON.stringify(response.user)
         );
       });
     });

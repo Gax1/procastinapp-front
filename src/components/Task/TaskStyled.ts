@@ -7,6 +7,7 @@ const TaskStyled = styled.section`
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  width: 90%;
   .task-card-header {
     display: flex;
     flex-direction: row;
