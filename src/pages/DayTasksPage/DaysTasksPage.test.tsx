@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { MockedWrapper } from "../../test-utils/Wrapper/Wrapper";
+import { MockedWrapper, Wrapper } from "../../test-utils/Wrapper/Wrapper";
 import { DayTasksPage } from "./DayTasksPage";
 
 describe("Given a daysTasks component", () => {
@@ -19,12 +19,12 @@ describe("Given a daysTasks component", () => {
       const titleText = "My Tasks";
 
       render(
-        <MockedWrapper>
+        <Wrapper>
           <DayTasksPage />
-        </MockedWrapper>
+        </Wrapper>
       );
 
-      const title = screen.getByRole("heading", { name: titleText });
+      const title = await screen.findByText(titleText);
 
       expect(title).toBeInTheDocument();
     });
