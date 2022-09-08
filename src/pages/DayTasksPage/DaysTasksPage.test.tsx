@@ -1,27 +1,27 @@
 import { render, screen } from "@testing-library/react";
-import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
+import { MockedWrapper } from "../../test-utils/Wrapper/Wrapper";
 import { DayTasksPage } from "./DayTasksPage";
 
 describe("Given a daysTasks component", () => {
   describe("When rendered", () => {
-    test("Then it should show a ProcastinapP title", () => {
+    test("Then it should show a ProcastinapP title", async () => {
       render(
-        <Wrapper>
+        <MockedWrapper>
           <DayTasksPage />
-        </Wrapper>
+        </MockedWrapper>
       );
 
       const title = screen.getByRole("heading", { name: "ProcastinapP" });
 
       expect(title).toBeInTheDocument();
     });
-    test("Then it should show another title with its text", () => {
+    test("Then it should show another title with its text", async () => {
       const titleText = "My Tasks";
 
       render(
-        <Wrapper>
+        <MockedWrapper>
           <DayTasksPage />
-        </Wrapper>
+        </MockedWrapper>
       );
 
       const title = screen.getByRole("heading", { name: titleText });
