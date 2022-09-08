@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import AuthLogin from "./components/AuthComponent/AuthLoginComponent";
 import { Loading } from "./components/Loading/Loading";
 import { DayTasksPage } from "./pages/DayTasksPage/DayTasksPage";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
@@ -14,14 +15,19 @@ function App() {
   );
   return (
     <>
-      {isLoadding && <Loading />}
-      <Routes>
-        <Route path="/" element={<Navigate to={"/login"} />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/my-day" element={<DayTasksPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <div className="main-container">
+        {isLoadding && <Loading />}
+        <Routes>
+          <Route path="/" element={<Navigate to={"/login"} />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/my-day"
+            element={<AuthLogin children={<DayTasksPage />} />}
+          />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </div>
     </>
   );
 }

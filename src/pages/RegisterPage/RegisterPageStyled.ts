@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const RegisterPageStyled = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
   .page-title-container {
     display: flex;
     background-color: ${(props) => props.theme.colors.secondaryColor};

@@ -12,3 +12,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
+.main-container {
+  height: 100vh;
+  background-color: #e7e1d5;
+}
