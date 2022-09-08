@@ -2,6 +2,7 @@ import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import AuthLogin from "./components/AuthComponent/AuthLoginComponent";
 import { Loading } from "./components/Loading/Loading";
+import { Modal } from "./components/Modal/Modal";
 import { DayTasksPage } from "./pages/DayTasksPage/DayTasksPage";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
@@ -17,6 +18,7 @@ function App() {
     <>
       <div className="main-container">
         {isLoadding && <Loading />}
+        <Modal />
         <Routes>
           <Route path="/" element={<Navigate to={"/login"} />} />
           <Route path="/register" element={<RegisterPage />} />
