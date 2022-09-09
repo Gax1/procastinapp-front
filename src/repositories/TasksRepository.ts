@@ -19,4 +19,22 @@ export class TasksRepository<Task extends Item>
       return error;
     }
   };
+
+  createTask = async (task: FormData, token: string, userId: string) => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+      params: { id: userId },
+    };
+
+    try {
+      const { data } = await axios.post(
+        `${this.url}/tasks/my-day`,
+        task,
+        config
+      );
+      return data;
+    } catch (error) {
+      return error;
+    }
+  };
 }

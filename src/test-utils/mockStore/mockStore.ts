@@ -7,7 +7,6 @@ const initialUiState: UiState = {
     displayText: "",
     isLoadding: false,
   },
-  isUserLoggedIn: true,
 };
 
 const initialTasksState: Task[] = [
@@ -25,6 +24,7 @@ const initialUser: LoginUser = {
   username: "test-username",
   id: "test-id",
   token: "test-token",
+  isUserLoggedIn: true,
 };
 
 const mockUiReducer = createReducer<UiState>(initialUiState, (builder) => {
@@ -43,7 +43,7 @@ const mockStore = configureStore({
   reducer: {
     ui: mockUiReducer,
     tasks: mockTaskReducer,
-    users: mockUserReducer,
+    user: mockUserReducer,
   },
 });
 

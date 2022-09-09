@@ -7,7 +7,6 @@ const initialUiState: UiState = {
     displayText: "",
     isLoadding: false,
   },
-  isUserLoggedIn: false,
 };
 
 const uiSlice = createSlice({
@@ -46,15 +45,6 @@ const uiSlice = createSlice({
         isLoadding: false,
       },
     }),
-    showLogIn: (previusUi) => ({
-      ...previusUi,
-      isUserLoggedIn: true,
-    }),
-
-    showLogout: (previusUi) => ({
-      ...previusUi,
-      isUserLoggedIn: false,
-    }),
   },
 });
 
@@ -65,6 +55,4 @@ export const {
   closeLoading: closeLoadingActionCreator,
   openNotification: openNotificationActionCreator,
   closeNotification: closeNotificationActionCreator,
-  showLogout: showLogoutActionCreator,
-  showLogIn: showLogInActionCreator,
 } = uiSlice.actions;

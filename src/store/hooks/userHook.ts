@@ -5,12 +5,12 @@ import {
   closeNotificationActionCreator,
   openLoadingActionCreator,
   openNotificationActionCreator,
-  showLogInActionCreator,
-  showLogoutActionCreator,
 } from "../features/uiSlice/uiSlice";
 import {
   loginUserActionCreator,
   logOutActionCreator,
+  showLogInActionCreator,
+  showLogoutActionCreator,
 } from "../features/usersSlice/usersSlice";
 import { useAppDispatch } from "./hooks";
 

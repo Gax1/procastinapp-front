@@ -41,3 +41,39 @@ describe("Given a Tasks Repository", () => {
     });
   });
 });
+
+describe("Given the create task method", () => {
+  const token = "test-token";
+  const userId = "test-userId";
+  describe("When its called with an form data valid", () => {
+    test("Then it should return a task", async () => {
+      const newtask = {
+        date: "09/05/2022",
+        description: "test-description",
+        id: "test-id",
+        img: "test-img",
+        importance: "very",
+        owner: "test-idOwner",
+        title: "title-test",
+      };
+
+      const formData = new FormData();
+      const username = "username-test";
+
+      formData.append("username", username);
+
+      const response = await tasksRepo.createTask(formData, token, userId);
+
+      expect(response).toStrictEqual({ task: newtask });
+    });
+  });
+  describe("When its called with an invalid form data", () => {
+    test("Then it should return an instance of error", async () => {
+      const formData = new FormData();
+
+      const response = await tasksRepo.createTask(formData, token, userId);
+
+      expect(response).toBeInstanceOf(Error);
+    });
+  });
+});

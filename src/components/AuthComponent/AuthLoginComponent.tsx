@@ -8,7 +8,7 @@ interface AuthProps {
 }
 
 const AuthLogin = ({ children }: AuthProps): JSX.Element => {
-  const { isUserLoggedIn } = useAppSelector((state: RootState) => state.ui);
+  const { isUserLoggedIn } = useAppSelector((state: RootState) => state.user);
   const navigate = useNavigate();
 
   useEffect(() => {
