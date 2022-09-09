@@ -1,3 +1,4 @@
+import { dateFormater } from "../utils/dateFormater";
 import { TasksRepository } from "./TasksRepository";
 
 const url = process.env.REACT_APP_APIURL as string;
@@ -48,7 +49,7 @@ describe("Given the create task method", () => {
   describe("When its called with an form data valid", () => {
     test("Then it should return a task", async () => {
       const newtask = {
-        date: "09/05/2022",
+        date: dateFormater(new Date()),
         description: "test-description",
         id: "test-id",
         img: "test-img",
@@ -58,9 +59,9 @@ describe("Given the create task method", () => {
       };
 
       const formData = new FormData();
-      const username = "username-test";
+      const title = "title-test";
 
-      formData.append("username", username);
+      formData.append("title", title);
 
       const response = await tasksRepo.createTask(formData, token, userId);
 
