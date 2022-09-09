@@ -1,5 +1,6 @@
 import { rest } from "msw";
 import { Task } from "../interfaces/interfaces";
+import { dateFormater } from "../utils/dateFormater";
 
 const apiUrl = process.env.REACT_APP_APIURL;
 
@@ -51,7 +52,7 @@ export const handlers = [
   }),
   rest.post(`${apiUrl}/tasks/my-day`, async (req, res, ctx) => {
     const newtask = {
-      date: "09/05/2022",
+      date: dateFormater(new Date()),
       description: "test-description",
       id: "test-id",
       img: "test-img",
@@ -65,10 +66,10 @@ export const handlers = [
 
     const request: any = await req;
 
-    const usernameData = request._body.get("username");
+    const title = request._body.get("title");
 
-    const status = usernameData === null ? 400 : 201;
-    const response = usernameData === null ? error : newtask;
+    const status = title === null ? 400 : 201;
+    const response = title === null ? error : newtask;
 
     return res(ctx.status(status), ctx.json({ task: response }));
   }),
