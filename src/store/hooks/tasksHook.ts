@@ -21,12 +21,16 @@ export const useTasks = () => {
       try {
         dispatch(openLoadingActionCreator());
         const repoTasks = new TasksRepository(url);
+
         const { tasks } = await repoTasks.getDay(id, date, token);
+
         if (tasks.length !== 0) {
           dispatch(uploadDayTasksActionCreator(tasks));
+
           dispatch(openNotificationActionCreator("Succeded: tasks uploaded"));
           return tasks;
         }
+
         dispatch(
           openNotificationActionCreator("Error: there is no tasks for today")
         );
@@ -34,6 +38,7 @@ export const useTasks = () => {
         return tasks;
       } catch (error) {
         dispatch(openNotificationActionCreator("Error uploading the tasks"));
+
         return error;
       }
     },
@@ -54,6 +59,7 @@ export const useTasks = () => {
       return;
     } catch (error) {
       dispatch(openNotificationActionCreator("Error creating the task"));
+
       return;
     }
   };

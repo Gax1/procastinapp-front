@@ -110,6 +110,36 @@ describe("Given a useTasks createTask function", () => {
         uploadDayTasksActionCreator([expectedTask])
       );
     });
+    test("Then it should call the dispatch method with a succes message", async () => {
+      jest.clearAllMocks();
+      const id = "test-id";
+      const token = "test-token";
+      const expectedTask: Task = {
+        date: dateFormater(new Date()),
+        description: "test-description",
+        id: "test-id",
+        img: "test-img",
+        importance: "very",
+        owner: "test-idOwner",
+        title: "title-test",
+      };
+
+      const formData = new FormData();
+
+      formData.append("title", expectedTask.title);
+
+      const {
+        result: {
+          current: { createTask },
+        },
+      } = renderHook(() => useTasks(), { wrapper: Wrapper });
+
+      await createTask(formData, token, id);
+
+      expect(mockDispatch).toHaveBeenCalledWith(
+        openNotificationActionCreator("Succeded: task created")
+      );
+    });
   });
   describe("When it receives an error", () => {
     test("Then it shoul call the dispatch with an error string", async () => {
