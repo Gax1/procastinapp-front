@@ -7,7 +7,7 @@ import { RootState } from "../../store/store";
 import { HeaderStyled } from "./HeaderStyled";
 
 export const Header = (): JSX.Element => {
-  const { isUserLoggedIn } = useSelector((state: RootState) => state.ui);
+  const { isUserLoggedIn } = useSelector((state: RootState) => state.user);
   const { logOutUser } = useUsers();
 
   return (

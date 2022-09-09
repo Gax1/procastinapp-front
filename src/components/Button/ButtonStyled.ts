@@ -9,6 +9,7 @@ export const ButtonStyled = styled.button`
   cursor: pointer;
   border: none;
   font-family: inherit;
+  margin-bottom: 40px;
 
   @media (min-width: 1000px) {
     width: 360px;

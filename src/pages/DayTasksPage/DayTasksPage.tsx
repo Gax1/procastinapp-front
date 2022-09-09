@@ -14,14 +14,14 @@ import { RootState } from "../../store/store";
 import { DayTasksPageStyled } from "./DayTasksPageStyled";
 
 export const DayTasksPage = (): JSX.Element => {
-  const { days, tasks, users } = useAppSelector((state: RootState) => state);
+  const { day, tasks, user } = useAppSelector((state: RootState) => state);
   const { getDay } = useTasks();
 
   useEffect(() => {
     (async () => {
-      await getDay(users.id, days, users.token);
+      await getDay(user.id, day, user.token);
     })();
-  }, [users.id, days, users.token, getDay]);
+  }, [user.id, day, user.token, getDay]);
 
   return (
     <>
@@ -31,7 +31,7 @@ export const DayTasksPage = (): JSX.Element => {
         <section className="tasks-days">
           <header className="title-taks">
             <span>&nbsp; </span>
-            <h3 className="picked-date">{days}</h3>
+            <h3 className="picked-date">{day}</h3>
             <FontAwesomeIcon icon={faCalendarAlt} className="calendar-icon" />
           </header>
           <div className="tasks-container">

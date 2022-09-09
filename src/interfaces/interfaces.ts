@@ -2,6 +2,7 @@ export interface LoginUser extends Item {
   username: string;
   id: string;
   token: string;
+  isUserLoggedIn: boolean;
 }
 
 export interface Item {
@@ -14,7 +15,6 @@ export interface UiState {
     displayText: string;
     isLoadding: boolean;
   };
-  isUserLoggedIn: boolean;
 }
 
 export interface IUsersRepository<T extends Item> {

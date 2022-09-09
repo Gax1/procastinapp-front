@@ -5,6 +5,7 @@ const initialUser: LoginUser = {
   username: "",
   id: "",
   token: "",
+  isUserLoggedIn: false,
 };
 
 const usersSlice = createSlice({
@@ -23,6 +24,15 @@ const usersSlice = createSlice({
       id: "",
       token: "",
     }),
+    showLogIn: (previusUser) => ({
+      ...previusUser,
+      isUserLoggedIn: true,
+    }),
+
+    showLogout: (previusUser) => ({
+      ...previusUser,
+      isUserLoggedIn: false,
+    }),
   },
 });
 
@@ -31,4 +41,6 @@ export const userReducer = usersSlice.reducer;
 export const {
   loginUser: loginUserActionCreator,
   logOut: logOutActionCreator,
+  showLogout: showLogoutActionCreator,
+  showLogIn: showLogInActionCreator,
 } = usersSlice.actions;

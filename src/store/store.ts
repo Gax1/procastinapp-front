@@ -7,9 +7,9 @@ import { userReducer } from "./features/usersSlice/usersSlice";
 export const store = configureStore({
   reducer: {
     ui: uiReducer,
-    users: userReducer,
+    user: userReducer,
     tasks: taskReducer,
-    days: dayReducer,
+    day: dayReducer,
   },
 });
 
