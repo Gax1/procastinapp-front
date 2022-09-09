@@ -112,8 +112,11 @@ describe("Given a useTasks createTask function", () => {
     });
     test("Then it should call the dispatch method with a succes message", async () => {
       jest.clearAllMocks();
+
       const id = "test-id";
+
       const token = "test-token";
+
       const expectedTask: Task = {
         date: dateFormater(new Date()),
         description: "test-description",
@@ -126,7 +129,7 @@ describe("Given a useTasks createTask function", () => {
 
       const formData = new FormData();
 
-      formData.append("title", expectedTask.title);
+      formData.append("description", expectedTask.description);
 
       const {
         result: {

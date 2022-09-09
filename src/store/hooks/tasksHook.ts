@@ -52,10 +52,12 @@ export const useTasks = () => {
 
     try {
       const { task: newTask } = await repoTasks.createTask(task, token, userId);
+
       if (newTask.date === day) {
         dispatch(uploadDayTasksActionCreator([...tasks, newTask]));
       }
       dispatch(openNotificationActionCreator("Succeded: task created"));
+
       return;
     } catch (error) {
       dispatch(openNotificationActionCreator("Error creating the task"));

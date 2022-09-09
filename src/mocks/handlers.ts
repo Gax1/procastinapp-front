@@ -60,6 +60,15 @@ export const handlers = [
       owner: "test-idOwner",
       title: "title-test",
     };
+    const taskWithOutDate = {
+      date: "09/20/22",
+      description: "test-description",
+      id: "test-id",
+      img: "test-img",
+      importance: "very",
+      owner: "test-idOwner",
+      title: "title-test",
+    };
     const error = {
       message: "Error",
     };
@@ -67,9 +76,12 @@ export const handlers = [
     const request: any = await req;
 
     const title = request._body.get("title");
+    const description = request._body.get("description");
 
-    const status = title === null ? 400 : 201;
-    const response = title === null ? error : newtask;
+    let status = title === null ? 400 : 201;
+    let response = title === null ? error : newtask;
+    response = description === null ? newtask : taskWithOutDate;
+    status = description === null ? status : 201;
 
     return res(ctx.status(status), ctx.json({ task: response }));
   }),
