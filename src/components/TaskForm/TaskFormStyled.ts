@@ -18,6 +18,10 @@ export const TaskFormStyled = styled.form`
   }
   .task-input__date {
     font-size: 20px;
+    padding: 10px;
+  }
+  .task-input__description {
+    padding: 10px;
   }
   select {
     font-family: inherit;
