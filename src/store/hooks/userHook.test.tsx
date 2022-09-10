@@ -144,7 +144,7 @@ describe("Given a useUsers hook logOutUser function", () => {
 
       logOutUser();
 
-      expect(window.localStorage.removeItem).toHaveBeenCalledWith("token");
+      expect(window.localStorage.removeItem).toHaveBeenCalledWith("user");
     });
     test("Then it shoul call the dispatch with a logout action creator", () => {
       const {

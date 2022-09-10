@@ -50,7 +50,7 @@ export const useUsers = () => {
   const logOutUser = () => {
     dispatch(logOutActionCreator());
     dispatch(showLogoutActionCreator());
-    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     navigate("/login");
   };
 

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { TasksRepository } from "../../repositories/TasksRepository";
 import { uploadDayTasksActionCreator } from "../features/tasksSlice/tasksSlice";
 import {
+  closeLoadingActionCreator,
   openLoadingActionCreator,
   openNotificationActionCreator,
 } from "../features/uiSlice/uiSlice";
@@ -20,25 +21,21 @@ export const useTasks = () => {
     async (id: string, date: string, token: string) => {
       try {
         dispatch(openLoadingActionCreator());
+
         const repoTasks = new TasksRepository(url);
 
         const { tasks } = await repoTasks.getDay(id, date, token);
 
-        if (tasks.length !== 0) {
-          dispatch(uploadDayTasksActionCreator(tasks));
-
-          dispatch(openNotificationActionCreator("Succeded: tasks uploaded"));
-          return tasks;
+        if (!tasks) {
+          throw new Error();
         }
 
-        dispatch(
-          openNotificationActionCreator("Error: there is no tasks for today")
-        );
+        dispatch(uploadDayTasksActionCreator(tasks));
 
+        dispatch(closeLoadingActionCreator());
         return tasks;
       } catch (error) {
         dispatch(openNotificationActionCreator("Error uploading the tasks"));
-
         return error;
       }
     },

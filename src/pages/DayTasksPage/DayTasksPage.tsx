@@ -6,6 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
 import Task from "../../components/Task/Task";
 import { useAppSelector } from "../../store/hooks/hooks";
@@ -44,7 +45,9 @@ export const DayTasksPage = (): JSX.Element => {
           </div>
           <footer className="icons-container">
             <FontAwesomeIcon icon={faBackward} />
-            <FontAwesomeIcon icon={faPlusCircle} />
+            <NavLink to={"/my-day/create-task"}>
+              <FontAwesomeIcon icon={faPlusCircle} />
+            </NavLink>
             <FontAwesomeIcon icon={faForward} />
           </footer>
         </section>
