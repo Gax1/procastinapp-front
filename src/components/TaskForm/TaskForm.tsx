@@ -64,8 +64,14 @@ const TaskForm = ({ buttonText }: TaskFormProps): JSX.Element => {
     await createTask(formData, token, id);
   };
 
+  const isDisabled =
+    newTask.title === "" ||
+    newTask.description === "" ||
+    newTask.img === "" ||
+    newTask.importance === "";
+
   return (
-    <TaskFormStyled onSubmit={onSubmit}>
+    <TaskFormStyled onSubmit={onSubmit} data-testid="taskForm">
       <label htmlFor="title">Title:</label>
       <input
         type="text"
@@ -106,8 +112,9 @@ const TaskForm = ({ buttonText }: TaskFormProps): JSX.Element => {
         className="task-input__select-image"
         id="img"
         onChange={handleChangeFile}
+        data-testid="img"
       />
-      <Button buttonText={buttonText} disabled={false} />
+      <Button buttonText={buttonText} disabled={isDisabled} />
     </TaskFormStyled>
   );
 };
