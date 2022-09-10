@@ -37,13 +37,6 @@ describe("Given a taskForm component", () => {
     const testIdForm = "taskForm";
     const onSubmitMock = jest.fn();
     const imgMock = new File([""], "");
-    const newTask = {
-      title: "test-title",
-      description: "test-description",
-      date: "date-test",
-      importance: "very",
-      img: imgMock,
-    };
 
     test("Then it should call the onSubmit function", async () => {
       render(

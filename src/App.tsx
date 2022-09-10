@@ -3,7 +3,6 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import AuthLogin from "./components/AuthComponent/AuthLoginComponent";
 import { Loading } from "./components/Loading/Loading";
 import { Modal } from "./components/Modal/Modal";
-import TaskForm from "./components/TaskForm/TaskForm";
 import { DayTasksPage } from "./pages/DayTasksPage/DayTasksPage";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
@@ -18,7 +17,7 @@ function App() {
   return (
     <>
       <div className="main-container">
-        {/* {isLoadding && <Loading />}
+        {isLoadding && <Loading />}
         <Modal />
         <Routes>
           <Route path="/" element={<Navigate to={"/login"} />} />
@@ -29,8 +28,7 @@ function App() {
             element={<AuthLogin children={<DayTasksPage />} />}
           />
           <Route path="*" element={<NotFoundPage />} />
-        </Routes> */}
-        <TaskForm buttonText="Create Task" />
+        </Routes>
       </div>
     </>
   );
