@@ -78,7 +78,7 @@ const RegisterForm = (): JSX.Element => {
             value={registerUser.repetedPassword}
             onChange={handleChange}
           />
-          <label htmlFor="repetedPassword">Select a file: </label>
+          <label htmlFor="img">Select a file: </label>
           <input
             type="file"
             id="img"
