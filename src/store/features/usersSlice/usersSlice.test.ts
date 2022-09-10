@@ -19,7 +19,7 @@ describe("Given a users slice", () => {
         username: "test-username",
         token: "test-token",
         id: "test-password",
-        isUserLoggedIn: false,
+        isUserLoggedIn: true,
       };
 
       const loadedUser = userReducer(

@@ -38,7 +38,7 @@ export const handlers = [
     ];
 
     const error = {
-      message: "Error-test",
+      data: new Error(),
     };
 
     const id: string | null = await req.url.searchParams.get("id");
