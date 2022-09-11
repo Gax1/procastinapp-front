@@ -95,7 +95,7 @@ describe("Given a custom hook login function", () => {
         result: {
           current: { login },
         },
-      } = renderHook(() => useUsers(), { wrapper: Wrapper });
+      } = renderHook(() => useUsers(), { wrapper: MockedWrapper });
 
       await login(validUser);
 
