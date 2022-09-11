@@ -106,6 +106,26 @@ describe("Given a custom hook login function", () => {
         );
       });
     });
+    test("Then when it receives an empty username", async () => {
+      const response = {};
+      UserRepository.prototype.sendLogin = jest
+        .fn()
+        .mockResolvedValueOnce(response);
+
+      jest.spyOn(Object.getPrototypeOf(window.localStorage), "setItem");
+      Object.setPrototypeOf(window.localStorage.setItem, jest.fn());
+      const {
+        result: {
+          current: { login },
+        },
+      } = renderHook(() => useUsers(), { wrapper: MockedWrapper });
+
+      await login(validUser);
+
+      await waitFor(() => {
+        expect(window.localStorage.setItem).not.toHaveBeenCalled();
+      });
+    });
   });
   describe("When it receives an error", () => {
     test("Then it should call the dispatch method", async () => {
