@@ -37,4 +37,17 @@ export class TasksRepository<Task extends Item>
       return error;
     }
   };
+
+  deleteTask = async (id: string, token: string) => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+      params: { id: id },
+    };
+    try {
+      const { data } = await axios.delete(`${this.url}/tasks/my-day`, config);
+      return data;
+    } catch (error) {
+      return error;
+    }
+  };
 }

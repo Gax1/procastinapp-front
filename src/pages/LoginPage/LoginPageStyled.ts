@@ -18,7 +18,8 @@ export const LoginPageStyled = styled.div`
     border-radius: 40px;
   }
   .login-footer {
-    margin-top: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;

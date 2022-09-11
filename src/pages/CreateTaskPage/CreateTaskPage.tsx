@@ -19,7 +19,7 @@ const CreateTaskPage = (): JSX.Element => {
           <h2 className="page-title">Add Task</h2>
           <span>&nbsp; </span>
         </div>
-        <TaskForm buttonText="Create Task" />
+        <TaskForm buttonText="Create Task" navigation="/my-day" />
       </CreateTaskPageStyled>
     </>
   );

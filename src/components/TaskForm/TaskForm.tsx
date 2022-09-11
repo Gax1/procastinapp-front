@@ -1,4 +1,5 @@
 import React, { SyntheticEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks/hooks";
 import { useTasks } from "../../store/hooks/tasksHook";
 import { RootState } from "../../store/store";
@@ -8,6 +9,7 @@ import { TaskFormStyled } from "./TaskFormStyled";
 
 interface TaskFormProps {
   buttonText: string;
+  navigation: string;
 }
 
 interface InitialForm {
@@ -18,7 +20,7 @@ interface InitialForm {
   img: string | File;
 }
 
-const TaskForm = ({ buttonText }: TaskFormProps): JSX.Element => {
+const TaskForm = ({ buttonText, navigation }: TaskFormProps): JSX.Element => {
   const initalFormState: InitialForm = {
     title: "",
     description: "",
@@ -29,6 +31,7 @@ const TaskForm = ({ buttonText }: TaskFormProps): JSX.Element => {
 
   const { createTask } = useTasks();
   const { id, token } = useAppSelector((state: RootState) => state.user);
+  const navigate = useNavigate();
 
   const formData = new FormData();
 
@@ -62,6 +65,7 @@ const TaskForm = ({ buttonText }: TaskFormProps): JSX.Element => {
     formData.append("img", newTask.img);
 
     await createTask(formData, token, id);
+    navigate(navigation);
   };
 
   const isDisabled =
