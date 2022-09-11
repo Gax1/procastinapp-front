@@ -5,13 +5,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Task as Itask } from "../../interfaces/interfaces";
+import { useTasks } from "../../store/hooks/tasksHook";
 import TaskStyled from "./TaskStyled";
 
 interface TaskProps {
   tasks: Itask;
+  token: string;
 }
 
-const Task = ({ tasks }: TaskProps): JSX.Element => {
+const Task = ({ tasks, token }: TaskProps): JSX.Element => {
+  const { deleteTask } = useTasks();
   return (
     <TaskStyled>
       <header className="task-card-header">
@@ -20,9 +23,19 @@ const Task = ({ tasks }: TaskProps): JSX.Element => {
       </header>
       <p className="task-description">{tasks.description}</p>
       <footer className="icons-footer">
-        <FontAwesomeIcon icon={faCheck} />
-        <FontAwesomeIcon icon={faTrashAlt} />
-        <FontAwesomeIcon icon={faExpandArrowsAlt} />
+        <FontAwesomeIcon
+          icon={faCheck}
+          onClick={() => deleteTask(tasks.id, token, true)}
+          className="icon"
+          data-testid="icon"
+        />
+        <FontAwesomeIcon
+          icon={faTrashAlt}
+          onClick={() => deleteTask(tasks.id, token, false)}
+          className="icon"
+          data-testid="icon"
+        />
+        <FontAwesomeIcon icon={faExpandArrowsAlt} className="icon" />
       </footer>
     </TaskStyled>
   );

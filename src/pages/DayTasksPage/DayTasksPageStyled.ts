@@ -43,4 +43,7 @@ export const DayTasksPageStyled = styled.div`
     margin-top: 40px;
     margin-bottom: 40px;
   }
+  .icon {
+    cursor: pointer;
+  }
 `;
