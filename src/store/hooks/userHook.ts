@@ -37,7 +37,9 @@ export const useUsers = () => {
     try {
       dispatch(openLoadingActionCreator());
       const { user } = await repoUsers.sendLogin(userData);
-      localStorage.setItem("user", JSON.stringify(user));
+      if (user) {
+        localStorage.setItem("user", JSON.stringify(user));
+      }
       dispatch(showLogInActionCreator());
       dispatch(loginUserActionCreator(user));
       dispatch(closeNotificationActionCreator());

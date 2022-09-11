@@ -85,4 +85,15 @@ export const handlers = [
 
     return res(ctx.status(status), ctx.json({ task: response }));
   }),
+  rest.delete(`${apiUrl}/tasks/my-day`, async (req, res, ctx) => {
+    const responseOk = { Message: "Tasks has been succesfully deleted" };
+    const responseBad = new Error("Error deleting the task");
+
+    const id: string | null = await req.url.searchParams.get("id");
+
+    const status = id === "" ? 404 : 201;
+    const response = id === "" ? responseBad : responseOk;
+
+    return res(ctx.status(status), ctx.json(response));
+  }),
 ];

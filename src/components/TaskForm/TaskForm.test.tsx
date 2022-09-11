@@ -13,7 +13,7 @@ describe("Given a taskForm component", () => {
     test("Then it should show a button and inputs", () => {
       render(
         <Wrapper>
-          <TaskForm buttonText="Create Task" />
+          <TaskForm buttonText="Create Task" navigation="/my-day" />
         </Wrapper>
       );
 
@@ -41,7 +41,7 @@ describe("Given a taskForm component", () => {
     test("Then it should call the onSubmit function", async () => {
       render(
         <Wrapper>
-          <TaskForm buttonText="Create Task" />
+          <TaskForm buttonText="Create Task" navigation="/my-day" />
         </Wrapper>
       );
 
