@@ -1,8 +1,7 @@
 import { renderHook } from "@testing-library/react";
 import { Task } from "../../interfaces/interfaces";
-import { TasksRepository } from "../../repositories/TasksRepository";
 
-import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
+import { MockedWrapper, Wrapper } from "../../test-utils/Wrapper/Wrapper";
 import { dateFormater } from "../../utils/dateFormater";
 import { uploadDayTasksActionCreator } from "../features/tasksSlice/tasksSlice";
 import { openNotificationActionCreator } from "../features/uiSlice/uiSlice";
@@ -72,7 +71,7 @@ describe("Given a useTasks getDay function", () => {
         result: {
           current: { getDay },
         },
-      } = renderHook(() => useTasks(), { wrapper: Wrapper });
+      } = renderHook(() => useTasks(), { wrapper: MockedWrapper });
       const tasks = await getDay(id, date, token);
 
       expect(tasks).toStrictEqual([]);

@@ -72,9 +72,8 @@ export const useTasks = () => {
       if (response instanceof Error) {
         throw new Error(response.message);
       }
-      dispatch(
-        uploadDayTasksActionCreator(tasks.filter((task) => task.id !== id))
-      );
+      const newTasks = tasks.filter((task) => task.id !== id);
+      dispatch(uploadDayTasksActionCreator(newTasks));
       if (isDone) {
         dispatch(
           openNotificationActionCreator(
