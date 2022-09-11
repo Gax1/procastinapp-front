@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import axios from "axios";
 import { UserRepository } from "../../repositories/UsersRepository";
-import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
+import { MockedWrapper, Wrapper } from "../../test-utils/Wrapper/Wrapper";
 import { openNotificationActionCreator } from "../features/uiSlice/uiSlice";
 import { logOutActionCreator } from "../features/usersSlice/usersSlice";
 import { useUsers } from "./userHook";
@@ -117,7 +117,7 @@ describe("Given a custom hook login function", () => {
         result: {
           current: { login },
         },
-      } = renderHook(() => useUsers(), { wrapper: Wrapper });
+      } = renderHook(() => useUsers(), { wrapper: MockedWrapper });
 
       await login(validUser);
 
