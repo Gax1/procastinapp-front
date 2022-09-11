@@ -41,14 +41,16 @@ export const DayTasksPage = (): JSX.Element => {
               <span className="empty-tasks">There are no tasks for today </span>
             )}
             {tasks.length > 0 &&
-              tasks.map((task) => <Task key={task.id} tasks={task} />)}
+              tasks.map((task) => (
+                <Task key={task.id} tasks={task} token={user.token} />
+              ))}
           </div>
           <footer className="icons-container">
-            <FontAwesomeIcon icon={faBackward} />
+            <FontAwesomeIcon icon={faBackward} className="icon" />
             <NavLink to={"/my-day/create-task"}>
-              <FontAwesomeIcon icon={faPlusCircle} />
+              <FontAwesomeIcon icon={faPlusCircle} className="icon" />
             </NavLink>
-            <FontAwesomeIcon icon={faForward} />
+            <FontAwesomeIcon icon={faForward} className="icon" />
           </footer>
         </section>
       </DayTasksPageStyled>

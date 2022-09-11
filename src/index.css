@@ -16,3 +16,6 @@ a {
   height: 100%;
   background-color: #e7e1d5;
 }
+.icon {
+  cursor: pointer;
+}

@@ -19,7 +19,7 @@ describe("Given a Task component", () => {
     test("Then it should show a heading and paragraph", () => {
       render(
         <Wrapper>
-          <Task tasks={tasks} />
+          <Task tasks={tasks} token={"toke-test"} />
         </Wrapper>
       );
 
