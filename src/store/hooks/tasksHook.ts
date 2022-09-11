@@ -63,5 +63,32 @@ export const useTasks = () => {
     }
   };
 
-  return { getDay, createTask };
+  const deleteTask = async (id: string, token: string, isDone: boolean) => {
+    dispatch(openLoadingActionCreator());
+    const repoTasks = new TasksRepository(url);
+
+    try {
+      const response = await repoTasks.deleteTask(id, token);
+      if (response instanceof Error) {
+        throw new Error(response.message);
+      }
+      const newTasks = tasks.filter((task) => task.id !== id);
+      dispatch(uploadDayTasksActionCreator(newTasks));
+      if (isDone) {
+        dispatch(
+          openNotificationActionCreator(
+            "Succeded: congratulation finishing that task"
+          )
+        );
+      } else {
+        dispatch(openNotificationActionCreator("Task deleted"));
+      }
+      return response;
+    } catch (error) {
+      dispatch(openNotificationActionCreator("Error deleting the task"));
+      return error;
+    }
+  };
+
+  return { getDay, createTask, deleteTask };
 };

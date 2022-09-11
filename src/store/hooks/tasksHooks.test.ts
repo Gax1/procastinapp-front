@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react";
 import { Task } from "../../interfaces/interfaces";
 
-import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
+import { MockedWrapper, Wrapper } from "../../test-utils/Wrapper/Wrapper";
 import { dateFormater } from "../../utils/dateFormater";
 import { uploadDayTasksActionCreator } from "../features/tasksSlice/tasksSlice";
 import { openNotificationActionCreator } from "../features/uiSlice/uiSlice";
@@ -71,7 +71,7 @@ describe("Given a useTasks getDay function", () => {
         result: {
           current: { getDay },
         },
-      } = renderHook(() => useTasks(), { wrapper: Wrapper });
+      } = renderHook(() => useTasks(), { wrapper: MockedWrapper });
       const tasks = await getDay(id, date, token);
 
       expect(tasks).toStrictEqual([]);
@@ -161,6 +161,66 @@ describe("Given a useTasks createTask function", () => {
       expect(mockDispatch).toHaveBeenCalledWith(
         openNotificationActionCreator("Error creating the task")
       );
+    });
+  });
+});
+
+describe("Given a delete task in useTasks hook", () => {
+  describe("When called with an id, token and isDone true", () => {
+    test("Then it should dispatch the succed notification", async () => {
+      const id = "test-id";
+      const token = "test-token";
+      const isDone = true;
+
+      const {
+        result: {
+          current: { deleteTask },
+        },
+      } = renderHook(() => useTasks(), { wrapper: Wrapper });
+
+      await deleteTask(id, token, isDone);
+
+      expect(mockDispatch).toHaveBeenCalledWith(
+        openNotificationActionCreator(
+          "Succeded: congratulation finishing that task"
+        )
+      );
+    });
+    describe("When called with an id, token and isDone false", () => {
+      test("then it should dispatch with notification delete task", async () => {
+        const id = "test-id";
+        const token = "test-token";
+        const isDone = false;
+
+        const {
+          result: {
+            current: { deleteTask },
+          },
+        } = renderHook(() => useTasks(), { wrapper: Wrapper });
+
+        await deleteTask(id, token, isDone);
+
+        expect(mockDispatch).toHaveBeenCalledWith(
+          openNotificationActionCreator("Task deleted")
+        );
+      });
+    });
+    describe("When it receives an error", () => {
+      test("Then it should return an error", async () => {
+        const id = "";
+        const token = "test-token";
+        const isDone = false;
+
+        const {
+          result: {
+            current: { deleteTask },
+          },
+        } = renderHook(() => useTasks(), { wrapper: Wrapper });
+
+        const response = await deleteTask(id, token, isDone);
+
+        expect(response).toBeInstanceOf(Error);
+      });
     });
   });
 });
