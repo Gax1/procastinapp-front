@@ -27,11 +27,13 @@ const Task = ({ tasks, token }: TaskProps): JSX.Element => {
           icon={faCheck}
           onClick={() => deleteTask(tasks.id, token, true)}
           className="icon"
+          data-testid="icon"
         />
         <FontAwesomeIcon
           icon={faTrashAlt}
           onClick={() => deleteTask(tasks.id, token, false)}
           className="icon"
+          data-testid="icon"
         />
         <FontAwesomeIcon icon={faExpandArrowsAlt} className="icon" />
       </footer>
