@@ -108,8 +108,8 @@ describe("Given a custom hook login function", () => {
     });
   });
   describe("When it receives an error", () => {
-    test("Then it should call the dipsatch method", async () => {
-      UserRepository.prototype.sendLogin = jest.fn().mockRejectedValue("error");
+    test("Then it should call the dispatch method", async () => {
+      UserRepository.prototype.sendLogin = jest.fn().mockRejectedValue("");
 
       jest.spyOn(Object.getPrototypeOf(window.localStorage), "setItem");
       Object.setPrototypeOf(window.localStorage.setItem, jest.fn());
@@ -117,7 +117,7 @@ describe("Given a custom hook login function", () => {
         result: {
           current: { login },
         },
-      } = renderHook(() => useUsers(), { wrapper: MockedWrapper });
+      } = renderHook(() => useUsers(), { wrapper: Wrapper });
 
       await login(validUser);
 
