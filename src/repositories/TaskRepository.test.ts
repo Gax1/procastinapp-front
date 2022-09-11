@@ -78,3 +78,29 @@ describe("Given the create task method", () => {
     });
   });
 });
+
+describe("Given a delete task method", () => {
+  describe("When called with a token and an id", () => {
+    test("Then it should return a message of error", async () => {
+      const id = "test-id";
+      const token = "test-token";
+      const expectedResponse = {
+        Message: "Tasks has been succesfully deleted",
+      };
+
+      const response = await tasksRepo.deleteTask(id, token);
+
+      expect(response).toStrictEqual(expectedResponse);
+    });
+  });
+  describe("When its called with an empty token", () => {
+    test("Then it should response an instance of error", async () => {
+      const id = "";
+      const token = "test-token";
+
+      const response = await tasksRepo.deleteTask(id, token);
+
+      expect(response).toBeInstanceOf(Error);
+    });
+  });
+});
