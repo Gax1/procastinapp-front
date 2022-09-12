@@ -40,6 +40,7 @@ const Task = ({ tasks, token }: TaskProps): JSX.Element => {
         <FontAwesomeIcon
           icon={faExpandArrowsAlt}
           className="icon"
+          data-testid="icon"
           onClick={() => navigate(`/my-task/${tasks.id}`)}
         />
       </footer>
