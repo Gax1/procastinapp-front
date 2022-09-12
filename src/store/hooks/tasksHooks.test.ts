@@ -221,3 +221,47 @@ describe("Given a delete task in useTasks hook", () => {
     });
   });
 });
+
+describe("Given a getTaskById in useTasks hook", () => {
+  describe("When its called with a valid id and token", () => {
+    test("Then it should return a new task", async () => {
+      jest.clearAllMocks();
+      const expectedTask = {
+        myTask: {
+          date: "09/05/2022",
+          description: "test-description",
+          id: "test-id",
+          img: "test-img",
+          importance: "very",
+          owner: "test-idOwner",
+          title: "title-test",
+        },
+      };
+      const id = "test-id";
+      const token = "test-token";
+      const {
+        result: {
+          current: { getTaskById },
+        },
+      } = renderHook(() => useTasks(), { wrapper: Wrapper });
+
+      const response = await getTaskById(id, token);
+
+      expect(response).toStrictEqual(expectedTask);
+    });
+  });
+  describe("When it receives an empty id", () => {
+    test("Then it should return an instace of error", async () => {
+      const id = "";
+      const token = "test-token";
+      const {
+        result: {
+          current: { getTaskById },
+        },
+      } = renderHook(() => useTasks(), { wrapper: Wrapper });
+
+      const response = await getTaskById(id, token);
+      expect(response).toBeInstanceOf(Error);
+    });
+  });
+});
