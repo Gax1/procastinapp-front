@@ -45,7 +45,7 @@ export const handlers = [
     const date = await req.url.searchParams.get("date");
 
     const status = id === "" ? 404 : 200;
-    let response = id === "" ? error : task;
+    let response: any = id === "" ? error : task;
     response = date === "" ? [] : task;
 
     return res(ctx.status(status), ctx.json({ tasks: response }));
@@ -95,5 +95,23 @@ export const handlers = [
     const response = id === "" ? responseBad : responseOk;
 
     return res(ctx.status(status), ctx.json(response));
+  }),
+  rest.get(`${apiUrl}/tasks/my-task/test-id`, async (req, res, ctx) => {
+    const response = {
+      myTask: {
+        date: "09/05/2022",
+        description: "test-description",
+        id: "test-id",
+        img: "test-img",
+        importance: "very",
+        owner: "test-idOwner",
+        title: "title-test",
+      },
+    };
+
+    return res(ctx.status(200), ctx.json(response));
+  }),
+  rest.get(`${apiUrl}/tasks/my-task/`, async (req, res, ctx) => {
+    return res(ctx.status(404), ctx.json({ message: "Error in the request" }));
   }),
 ];
