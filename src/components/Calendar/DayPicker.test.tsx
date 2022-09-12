@@ -1,28 +1,33 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
 import DayPicker from "./DayPicker";
-
-const mockDispatch = jest.fn();
-jest.mock("react-redux", () => ({
-  ...jest.requireActual("react-redux"),
-  useAppDispatch: () => mockDispatch,
-}));
 
 describe("Given a DayPicker component", () => {
   describe("When rendered", () => {
     test("Then it should show buttons", async () => {
       const monthDate = "September 2022";
 
-      render(
+      const { container } = render(
         <Wrapper>
           <DayPicker />
         </Wrapper>
       );
+
+      const mockOnChange = jest.fn();
+
+      container.onchange = mockOnChange;
+
       const monthButton = screen.getByText(monthDate);
-      const buttons = screen.getAllByRole("button");
+      const buttonOne = screen.getByRole("button", {
+        name: "September 15, 2022",
+      });
+      await fireEvent.change(buttonOne);
 
       expect(monthButton).toBeInTheDocument();
-      expect(buttons[10]).toBeInTheDocument();
+      expect(buttonOne).toBeInTheDocument();
+      await waitFor(() => {
+        expect(mockOnChange).toHaveBeenCalled();
+      });
     });
   });
 });
