@@ -19,9 +19,9 @@ export const DayTasksPageStyled = styled.div`
   }
   .title-taks {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     margin: 20px;
     font-size: ${(props) => props.theme.fontSizesMobile.generalUse};
   }
