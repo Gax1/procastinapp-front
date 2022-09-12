@@ -4,6 +4,7 @@ import {
   faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 import { Task as Itask } from "../../interfaces/interfaces";
 import { useTasks } from "../../store/hooks/tasksHook";
 import TaskStyled from "./TaskStyled";
@@ -15,6 +16,7 @@ interface TaskProps {
 
 const Task = ({ tasks, token }: TaskProps): JSX.Element => {
   const { deleteTask } = useTasks();
+  const navigate = useNavigate();
   return (
     <TaskStyled>
       <header className="task-card-header">
@@ -35,7 +37,11 @@ const Task = ({ tasks, token }: TaskProps): JSX.Element => {
           className="icon"
           data-testid="icon"
         />
-        <FontAwesomeIcon icon={faExpandArrowsAlt} className="icon" />
+        <FontAwesomeIcon
+          icon={faExpandArrowsAlt}
+          className="icon"
+          onClick={() => navigate(`/my-task/${tasks.id}`)}
+        />
       </footer>
     </TaskStyled>
   );

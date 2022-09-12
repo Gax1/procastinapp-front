@@ -90,22 +90,24 @@ export const useTasks = () => {
     }
   };
 
-  const getTaskById = async (id: string, token: string) => {
-    dispatch(openLoadingActionCreator());
-    const repoTasks = new TasksRepository(url);
-
-    try {
-      const myTask = await repoTasks.getTaskById(id, token);
-      if (myTask instanceof Error) {
-        throw new Error(myTask.message);
+  const getTaskById = useCallback(
+    async (id: string, token: string) => {
+      dispatch(openLoadingActionCreator());
+      const repoTasks = new TasksRepository(url);
+      try {
+        const myTask = await repoTasks.getTaskById(id, token);
+        if (myTask instanceof Error) {
+          throw new Error(myTask.message);
+        }
+        dispatch(closeLoadingActionCreator());
+        return myTask;
+      } catch (error) {
+        dispatch(openNotificationActionCreator("Error uploading that task"));
+        return error;
       }
-      dispatch(closeLoadingActionCreator());
-      return myTask;
-    } catch (error) {
-      dispatch(openNotificationActionCreator("Error uploading that task"));
-      return error;
-    }
-  };
+    },
+    [dispatch, url]
+  );
 
   return { getDay, createTask, deleteTask, getTaskById };
 };

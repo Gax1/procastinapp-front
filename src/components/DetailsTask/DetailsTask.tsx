@@ -6,6 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Task } from "../../interfaces/interfaces";
 import { useTasks } from "../../store/hooks/tasksHook";
 import { RootState } from "../../store/store";
@@ -17,14 +18,20 @@ interface DetailsTaskProps {
 
 export const DetailsTask = ({ task }: DetailsTaskProps): JSX.Element => {
   const { deleteTask } = useTasks();
-  const { user } = useSelector((state: RootState) => state);
+  const { token } = useSelector((state: RootState) => state.user);
+  const navigate = useNavigate();
+
+  const deleteOnClick = (isDone: boolean) => {
+    deleteTask(task.id, token, isDone);
+    navigate("/my-day");
+  };
 
   return (
     <DetailsTaskStyled>
       <h2 className="task-title">{task.title}</h2>
       <div className="task-details">
         <img
-          src={task.backUpImg}
+          src={`${task.backUpImg}`}
           alt={`${task.title}`}
           className="task-image"
         />
@@ -45,7 +52,7 @@ export const DetailsTask = ({ task }: DetailsTaskProps): JSX.Element => {
         <div className="task-icons">
           <FontAwesomeIcon
             icon={faCheck}
-            onClick={() => deleteTask(task.id, user.id, true)}
+            onClick={() => deleteOnClick(true)}
             className="icon"
             data-testid="icon"
           />
@@ -53,7 +60,7 @@ export const DetailsTask = ({ task }: DetailsTaskProps): JSX.Element => {
           <FontAwesomeIcon icon={faPencil} className="icon" />
           <FontAwesomeIcon
             icon={faTrashAlt}
-            onClick={() => deleteTask(task.id, user.id, false)}
+            onClick={() => deleteOnClick(false)}
             className="icon"
             data-testid="icon"
           />

@@ -8,6 +8,7 @@ import { DayTasksPage } from "./pages/DayTasksPage/DayTasksPage";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 import { RegisterPage } from "./pages/RegisterPage/RegisterPage";
+import { TaskDetailsPage } from "./pages/TaskDetailsPage/TaskDetailsPage";
 import { loginUserActionCreator } from "./store/features/usersSlice/usersSlice";
 import { useAppDispatch, useAppSelector } from "./store/hooks/hooks";
 import { RootState } from "./store/store";
@@ -41,6 +42,10 @@ function App() {
           <Route
             path="/my-day/create-task"
             element={<AuthLogin children={<CreateTaskPage />} />}
+          />
+          <Route
+            path="/my-task/:id"
+            element={<AuthLogin children={<TaskDetailsPage />} />}
           />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
