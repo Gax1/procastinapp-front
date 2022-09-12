@@ -45,4 +45,5 @@ export interface Task {
   date: string;
   img: string;
   owner: string;
+  backUpImg?: string;
 }
