@@ -8,6 +8,13 @@ import userEvent from "@testing-library/user-event";
 jest.mock("../../repositories/TasksRepository");
 TasksRepository as jest.Mock;
 
+const mockedNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockedNavigate,
+}));
+
 const tasks: Itask = {
   date: "22/07/2022",
   description:
@@ -50,8 +57,10 @@ describe("Given a Task component", () => {
 
       await userEvent.click(iconsDelete[0]);
       await userEvent.click(iconsDelete[1]);
+      await userEvent.click(iconsDelete[2]);
 
       expect(mockedDelete).toHaveBeenCalledTimes(2);
+      expect(mockedNavigate).toHaveBeenCalled();
     });
   });
 });

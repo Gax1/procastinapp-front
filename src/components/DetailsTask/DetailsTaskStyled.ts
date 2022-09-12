@@ -7,6 +7,7 @@ export const DetailsTaskStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 90%;
   .task-title {
     margin: 40px;
     font-size: ${(props) => props.theme.fontSizesMobile.big};
@@ -20,6 +21,7 @@ export const DetailsTaskStyled = styled.div`
     justify-content: center;
     margin-bottom: 40px;
     font-size: ${(props) => props.theme.fontSizesMobile.medium};
+    width: 90%;
   }
   .task-image {
     margin: 40px;
