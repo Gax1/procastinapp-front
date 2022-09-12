@@ -104,3 +104,37 @@ describe("Given a delete task method", () => {
     });
   });
 });
+
+describe("Given a getTaskById method", () => {
+  describe("When its called with an id and a token", () => {
+    test("Then it should return a task", async () => {
+      const id = "test-id";
+      const token = "test-token";
+      const expectedResponse = {
+        myTask: {
+          date: "09/05/2022",
+          description: "test-description",
+          id: "test-id",
+          img: "test-img",
+          importance: "very",
+          owner: "test-idOwner",
+          title: "title-test",
+        },
+      };
+
+      const response = await tasksRepo.getTaskById(id, token);
+
+      expect(response).toStrictEqual(expectedResponse);
+    });
+  });
+  describe("When its called with an empty id", () => {
+    test("Then it should return an error", async () => {
+      const id = "";
+      const token = "test-token";
+
+      const response = await tasksRepo.getTaskById(id, token);
+
+      expect(response).toBeInstanceOf(Error);
+    });
+  });
+});

@@ -168,6 +168,7 @@ describe("Given a useTasks createTask function", () => {
 describe("Given a delete task in useTasks hook", () => {
   describe("When called with an id, token and isDone true", () => {
     test("Then it should dispatch the succed notification", async () => {
+      jest.clearAllMocks();
       const id = "test-id";
       const token = "test-token";
       const isDone = true;
@@ -180,11 +181,7 @@ describe("Given a delete task in useTasks hook", () => {
 
       await deleteTask(id, token, isDone);
 
-      expect(mockDispatch).toHaveBeenCalledWith(
-        openNotificationActionCreator(
-          "Succeded: congratulation finishing that task"
-        )
-      );
+      expect(mockDispatch).toHaveBeenCalledTimes(3);
     });
     describe("When called with an id, token and isDone false", () => {
       test("then it should dispatch with notification delete task", async () => {

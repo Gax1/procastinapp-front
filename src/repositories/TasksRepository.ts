@@ -50,4 +50,20 @@ export class TasksRepository<Task extends Item>
       return error;
     }
   };
+
+  getTaskById = async (id: string, token: string) => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+
+    try {
+      const { data } = await axios.get(
+        `${this.url}/tasks/my-task/${id}`,
+        config
+      );
+      return data;
+    } catch (error) {
+      return error;
+    }
+  };
 }

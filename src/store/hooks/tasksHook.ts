@@ -77,7 +77,7 @@ export const useTasks = () => {
       if (isDone) {
         dispatch(
           openNotificationActionCreator(
-            "Succeded: congratulation finishing that task"
+            "Succeded: congratulation on finishing that task"
           )
         );
       } else {
