@@ -90,5 +90,22 @@ export const useTasks = () => {
     }
   };
 
-  return { getDay, createTask, deleteTask };
+  const getTaskById = async (id: string, token: string) => {
+    dispatch(openLoadingActionCreator());
+    const repoTasks = new TasksRepository(url);
+
+    try {
+      const myTask = await repoTasks.getTaskById(id, token);
+      if (myTask instanceof Error) {
+        throw new Error(myTask.message);
+      }
+      dispatch(closeLoadingActionCreator());
+      return myTask;
+    } catch (error) {
+      dispatch(openNotificationActionCreator("Error uploading that task"));
+      return error;
+    }
+  };
+
+  return { getDay, createTask, deleteTask, getTaskById };
 };
