@@ -11,15 +11,11 @@ const DayPicker = (): JSX.Element => {
 
   const [date, setDate] = useState(new Date());
 
-  const onChangeHandler = (value: Date) => {
-    setDate(value);
-    dispatch(changeDateActionCreator(dateFormater(date)));
-  };
-
   return (
     <Calendar
       value={date}
-      onChange={onChangeHandler}
+      onChange={() => dispatch(changeDateActionCreator(dateFormater(date)))}
+      onClickDay={setDate}
       data-testid="calendar-id"
     />
   );
