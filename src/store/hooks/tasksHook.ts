@@ -109,5 +109,23 @@ export const useTasks = () => {
     [dispatch, url]
   );
 
-  return { getDay, createTask, deleteTask, getTaskById };
+  const editTask = async (id: string, token: string, editedTask: FormData) => {
+    dispatch(openLoadingActionCreator());
+    const repoTasks = new TasksRepository(url);
+
+    try {
+      const response = await repoTasks.editTask(id, token, editedTask);
+      if (response instanceof Error) {
+        throw new Error();
+      }
+      dispatch(closeLoadingActionCreator());
+      return;
+    } catch (error) {
+      dispatch(openNotificationActionCreator("Error editing that task"));
+
+      return error;
+    }
+  };
+
+  return { getDay, createTask, deleteTask, getTaskById, editTask };
 };

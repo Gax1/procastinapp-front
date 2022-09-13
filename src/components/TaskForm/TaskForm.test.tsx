@@ -1,7 +1,15 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import {
+  fireEvent,
+  render,
+  renderHook,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
 import TaskForm from "./TaskForm";
 import userEvent from "@testing-library/user-event";
+import { useTasks } from "../../store/hooks/tasksHook";
+import { InitialForm } from "../../interfaces/interfaces";
 
 describe("Given a taskForm component", () => {
   const titlePlaceHolder = "here goes the title...";
@@ -9,11 +17,30 @@ describe("Given a taskForm component", () => {
   const describePlaceHolder = "Write here youre description...";
   const buttonText = "Create Task";
   const importanceText = "How importan is this task for you?";
+  const initalFormState: InitialForm = {
+    title: "",
+    description: "",
+    date: "",
+    importance: "",
+    img: "",
+  };
+
   describe("When rendered", () => {
     test("Then it should show a button and inputs", () => {
+      const {
+        result: {
+          current: { createTask },
+        },
+      } = renderHook(() => useTasks(), { wrapper: Wrapper });
+
       render(
         <Wrapper>
-          <TaskForm buttonText="Create Task" navigation="/my-day" />
+          <TaskForm
+            buttonText="Create Task"
+            navigation="/my-day"
+            sendData={createTask}
+            initialData={initalFormState}
+          />
         </Wrapper>
       );
 
@@ -39,9 +66,19 @@ describe("Given a taskForm component", () => {
     const imgMock = new File([""], "");
 
     test("Then it should call the onSubmit function", async () => {
+      const {
+        result: {
+          current: { createTask },
+        },
+      } = renderHook(() => useTasks(), { wrapper: Wrapper });
       render(
         <Wrapper>
-          <TaskForm buttonText="Create Task" navigation="/my-day" />
+          <TaskForm
+            buttonText="Create Task"
+            navigation="/my-day"
+            sendData={createTask}
+            initialData={initalFormState}
+          />
         </Wrapper>
       );
 

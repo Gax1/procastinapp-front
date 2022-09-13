@@ -4,7 +4,10 @@ import { Task } from "../../interfaces/interfaces";
 import { MockedWrapper, Wrapper } from "../../test-utils/Wrapper/Wrapper";
 import { dateFormater } from "../../utils/dateFormater";
 import { uploadDayTasksActionCreator } from "../features/tasksSlice/tasksSlice";
-import { openNotificationActionCreator } from "../features/uiSlice/uiSlice";
+import {
+  closeLoadingActionCreator,
+  openNotificationActionCreator,
+} from "../features/uiSlice/uiSlice";
 import { useTasks } from "./tasksHook";
 
 const mockDispatch = jest.fn();
@@ -262,6 +265,50 @@ describe("Given a getTaskById in useTasks hook", () => {
 
       const response = await getTaskById(id, token);
       expect(response).toBeInstanceOf(Error);
+    });
+  });
+});
+
+describe("Given a editTask in useTask hook", () => {
+  beforeEach(() => jest.clearAllMocks());
+  describe("When its called with an edited task, an id and a token", () => {
+    test("Then it should call the dispatch method", async () => {
+      const id = "test-id";
+
+      const token = "test-token";
+
+      const formData = new FormData();
+      formData.append("title", "title-test");
+
+      const {
+        result: {
+          current: { editTask },
+        },
+      } = renderHook(() => useTasks(), { wrapper: Wrapper });
+
+      await editTask(id, token, formData);
+
+      expect(mockDispatch).toHaveBeenCalledWith(closeLoadingActionCreator());
+    });
+  });
+  describe("When it receives an empty form data", () => {
+    test("Then it should return an error", async () => {
+      const id = "test-id";
+
+      const token = "test-token";
+
+      const formData = new FormData();
+      const {
+        result: {
+          current: { editTask },
+        },
+      } = renderHook(() => useTasks(), { wrapper: Wrapper });
+
+      await editTask(id, token, formData);
+
+      expect(mockDispatch).toHaveBeenCalledWith(
+        openNotificationActionCreator("Error editing that task")
+      );
     });
   });
 });
