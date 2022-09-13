@@ -24,6 +24,7 @@ describe("Given a taskForm component", () => {
     importance: "",
     img: "",
   };
+  const id = "test-id";
 
   describe("When rendered", () => {
     test("Then it should show a button and inputs", () => {
@@ -40,6 +41,7 @@ describe("Given a taskForm component", () => {
             navigation="/my-day"
             sendData={createTask}
             initialData={initalFormState}
+            id={id}
           />
         </Wrapper>
       );
@@ -78,6 +80,7 @@ describe("Given a taskForm component", () => {
             navigation="/my-day"
             sendData={createTask}
             initialData={initalFormState}
+            id={id}
           />
         </Wrapper>
       );

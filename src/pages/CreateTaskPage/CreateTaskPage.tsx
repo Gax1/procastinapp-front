@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
 import TaskForm from "../../components/TaskForm/TaskForm";
 import { InitialForm } from "../../interfaces/interfaces";
+import { useAppSelector } from "../../store/hooks/hooks";
 import { useTasks } from "../../store/hooks/tasksHook";
+import { RootState } from "../../store/store";
 import CreateTaskPageStyled from "./CreateTaskPageStyled";
 
 const CreateTaskPage = (): JSX.Element => {
@@ -16,6 +18,7 @@ const CreateTaskPage = (): JSX.Element => {
     importance: "",
     img: "",
   };
+  const { id } = useAppSelector((state: RootState) => state.user);
   return (
     <>
       <CreateTaskPageStyled>
@@ -34,6 +37,7 @@ const CreateTaskPage = (): JSX.Element => {
           navigation="/my-day"
           sendData={createTask}
           initialData={initalFormState}
+          id={id}
         />
       </CreateTaskPageStyled>
     </>

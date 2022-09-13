@@ -31,7 +31,7 @@ function App() {
     <>
       <div className="main-container">
         {isLoadding && <Loading />}
-        <Modal />
+        {/* <Modal />
         <Routes>
           <Route path="/" element={<Navigate to={"/login"} />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -53,7 +53,8 @@ function App() {
             element={<AuthLogin children={<ModifyTask />} />}
           />
           <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        </Routes> */}
+        <ModifyTask />
       </div>
     </>
   );

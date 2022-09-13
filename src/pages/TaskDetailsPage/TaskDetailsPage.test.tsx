@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import { MockedWrapper } from "../../test-utils/Wrapper/Wrapper";
+import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
 import { TaskDetailsPage } from "./TaskDetailsPage";
 
 const id = { id: "test-id" };
@@ -18,9 +18,9 @@ describe("Given a TaskDetailsPage component", () => {
       const titleText = "My Task";
 
       render(
-        <MockedWrapper>
+        <Wrapper>
           <TaskDetailsPage />
-        </MockedWrapper>
+        </Wrapper>
       );
 
       const mainTitle = screen.getByRole("heading", { name: mainTitleText });

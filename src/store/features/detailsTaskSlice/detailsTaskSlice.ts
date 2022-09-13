@@ -1,7 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Task } from "../../../interfaces/interfaces";
 
-const initialTask = {};
+const initialTask: Task = {
+  date: "",
+  description: "",
+  id: "",
+  img: "",
+  importance: "",
+  owner: "",
+  title: "",
+  backUpImg: "",
+};
 
 const detailTaskSlice = createSlice({
   name: "task",

@@ -6,7 +6,16 @@ import {
 describe("Given a detailsTask reducer", () => {
   describe("When its called with an initial state and a action with payload", () => {
     test("Then it should return the payload", () => {
-      const initialState = {};
+      const initialState = {
+        date: "",
+        description: "",
+        id: "",
+        img: "",
+        importance: "",
+        owner: "",
+        title: "",
+        backUpImg: "",
+      };
       const payloadAction = {
         title: "test-title",
         date: "02/07/2022",
