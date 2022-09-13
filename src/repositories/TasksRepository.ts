@@ -74,7 +74,7 @@ export class TasksRepository<Task extends Item>
     };
     try {
       const { data } = await axios.put(
-        `${this.url}//my-day`,
+        `${this.url}/tasks/my-day`,
         editedTask,
         config
       );

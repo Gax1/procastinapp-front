@@ -138,3 +138,38 @@ describe("Given a getTaskById method", () => {
     });
   });
 });
+
+describe("Given a editTask method", () => {
+  const id = "test-id";
+
+  const token = "test-token";
+  const title = "title-test";
+  describe("When its called with an id, a token an a edited task in form data", () => {
+    test("Then it should return an edited task", async () => {
+      const editedTask = {
+        date: dateFormater(new Date()),
+        description: "test-description",
+        id: "test-id",
+        img: "test-img",
+        importance: "very",
+        owner: "test-idOwner",
+        title: "title-test",
+      };
+      const formData = new FormData();
+
+      formData.append("title", title);
+
+      const response = await tasksRepo.editTask(id, token, formData);
+
+      expect(response).toStrictEqual({ task: editedTask });
+    });
+  });
+  describe("When its called with an empty from data", () => {
+    test("Then it should return an instace of error", async () => {
+      const formData = new FormData();
+      const response = await tasksRepo.editTask(id, token, formData);
+
+      expect(response).toBeInstanceOf(Error);
+    });
+  });
+});
