@@ -1,0 +1,20 @@
+.react-calendar {
+  border-radius: 40px;
+  font-family: inherit;
+  min-width: 400px;
+  width: 90%;
+  background-color: #e7e1d5;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: none;
+}
+.react-calendar__navigation__label {
+  font-family: inherit;
+  font-size: 18px;
+}
+.react-calendar__tile--now {
+  background-color: #f9c5a2;
+}
+.react-calendar__navigation__arrow {
+  font-size: 25px;
+}
