@@ -14,8 +14,8 @@ const DayPicker = (): JSX.Element => {
   return (
     <Calendar
       value={date}
-      onChange={() => dispatch(changeDateActionCreator(dateFormater(date)))}
-      onClickDay={setDate}
+      onChange={setDate}
+      onClickDay={() => dispatch(changeDateActionCreator(dateFormater(date)))}
       data-testid="calendar-id"
     />
   );
