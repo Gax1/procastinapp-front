@@ -114,4 +114,26 @@ export const handlers = [
   rest.get(`${apiUrl}/tasks/my-task/`, async (req, res, ctx) => {
     return res(ctx.status(404), ctx.json({ message: "Error in the request" }));
   }),
+  rest.put(`${apiUrl}/tasks/my-day`, async (req, res, ctx) => {
+    const error = {
+      message: "Error",
+    };
+    const editedTask = {
+      date: dateFormater(new Date()),
+      description: "test-description",
+      id: "test-id",
+      img: "test-img",
+      importance: "very",
+      owner: "test-idOwner",
+      title: "title-test",
+    };
+
+    const request: any = await req;
+
+    const title = request._body.get("title");
+
+    let status = title === null ? 400 : 201;
+    let response = title === null ? error : editedTask;
+    return res(ctx.status(status), ctx.json({ task: response }));
+  }),
 ];
