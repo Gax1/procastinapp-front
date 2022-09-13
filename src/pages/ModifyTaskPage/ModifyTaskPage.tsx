@@ -3,21 +3,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import { DetailsTask } from "../../components/DetailsTask/DetailsTask";
 import { Header } from "../../components/Header/Header";
+import TaskForm from "../../components/TaskForm/TaskForm";
 import { uploadTaskActionCreator } from "../../store/features/detailsTaskSlice/detailsTaskSlice";
 import { useAppDispatch } from "../../store/hooks/hooks";
 import { useTasks } from "../../store/hooks/tasksHook";
 import { RootState } from "../../store/store";
-import { TaskDetailsPageStyled } from "./TaskDetailsPageStyled";
+import { ModifyTaskStyled } from "./ModifyTaskStyledPage";
 
-export const TaskDetailsPage = (): JSX.Element => {
+export const ModifyTask = (): JSX.Element => {
   const {
     task,
     user: { token },
   } = useSelector((state: RootState) => state);
   const { id } = useParams();
-  const { getTaskById } = useTasks();
+  const { getTaskById, editTask } = useTasks();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -28,23 +28,22 @@ export const TaskDetailsPage = (): JSX.Element => {
   }, [id, token, dispatch, getTaskById]);
 
   return (
-    <>
+    <ModifyTaskStyled>
       <Header />
-      <TaskDetailsPageStyled>
-        <div className="header-details">
-          <span className="page-title navigation-arrow">
-            <NavLink to={"/my-day"}>
-              <FontAwesomeIcon
-                className="icon icon-navigation"
-                icon={faReply}
-              />
-            </NavLink>
-          </span>
-          <h2 className="page-title">My Task</h2>
-          <span>&nbsp; </span>
-        </div>
-        <DetailsTask task={task} />
-      </TaskDetailsPageStyled>
-    </>
+      <div className="page-heading">
+        <NavLink to={"/my-day"}>
+          <FontAwesomeIcon className="icon icon-navigation" icon={faReply} />
+        </NavLink>
+        <h2 className="page-title">Update Task</h2>
+        <span>&nbsp; </span>
+      </div>
+      <TaskForm
+        buttonText="Update"
+        navigation={`/my-task/${id}`}
+        sendData={editTask}
+        initialData={task}
+        id={task.id}
+      />
+    </ModifyTaskStyled>
   );
 };

@@ -19,6 +19,12 @@ const task = {
 jest.mock("../../repositories/TasksRepository");
 TasksRepository as jest.Mock;
 
+const mockedNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockedNavigate,
+}));
+
 describe("Given a Details Task component", () => {
   describe("When rendered with a task", () => {
     test("Then it should show a title", () => {
@@ -51,9 +57,9 @@ describe("Given a Details Task component", () => {
       const icons = screen.getAllByTestId(testId);
 
       icons.forEach(async (icon) => await userEvent.click(icon));
-      await waitFor(() => {
-        expect(mockedDelete).toHaveBeenCalledTimes(2);
-      });
+
+      await waitFor(() => expect(mockedDelete).toHaveBeenCalledTimes(2));
+      await waitFor(() => expect(mockedNavigate).toHaveBeenCalled());
     });
   });
 });

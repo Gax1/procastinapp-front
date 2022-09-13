@@ -6,6 +6,8 @@ import { Modal } from "./components/Modal/Modal";
 import CreateTaskPage from "./pages/CreateTaskPage/CreateTaskPage";
 import { DayTasksPage } from "./pages/DayTasksPage/DayTasksPage";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
+import { ModifyTask } from "./pages/ModifyTaskPage/ModifyTaskPage";
+
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 import { RegisterPage } from "./pages/RegisterPage/RegisterPage";
 import { TaskDetailsPage } from "./pages/TaskDetailsPage/TaskDetailsPage";
@@ -46,6 +48,10 @@ function App() {
           <Route
             path="/my-task/:id"
             element={<AuthLogin children={<TaskDetailsPage />} />}
+          />
+          <Route
+            path="/my-task/update/:id"
+            element={<AuthLogin children={<ModifyTask />} />}
           />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

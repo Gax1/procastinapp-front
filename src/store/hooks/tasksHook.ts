@@ -42,7 +42,7 @@ export const useTasks = () => {
     [dispatch, url]
   );
 
-  const createTask = async (task: FormData, token: string, userId: string) => {
+  const createTask = async (userId: string, token: string, task: FormData) => {
     dispatch(openLoadingActionCreator());
 
     const repoTasks = new TasksRepository(url);
@@ -123,7 +123,7 @@ export const useTasks = () => {
     } catch (error) {
       dispatch(openNotificationActionCreator("Error editing that task"));
 
-      return error;
+      return;
     }
   };
 

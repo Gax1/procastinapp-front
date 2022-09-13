@@ -57,7 +57,12 @@ export const DetailsTask = ({ task }: DetailsTaskProps): JSX.Element => {
             data-testid="icon"
           />
           <FontAwesomeIcon icon={faRedo} className="icon" />
-          <FontAwesomeIcon icon={faPencil} className="icon" />
+          <FontAwesomeIcon
+            icon={faPencil}
+            className="icon"
+            onClick={() => navigate(`/my-task/update/${task.id}`)}
+            data-testid="icon"
+          />
           <FontAwesomeIcon
             icon={faTrashAlt}
             onClick={() => deleteOnClick(false)}

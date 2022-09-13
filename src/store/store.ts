@@ -1,5 +1,6 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { dayReducer } from "./features/daysSlice/daysSlice";
+import { detailsTaskReducer } from "./features/detailsTaskSlice/detailsTaskSlice";
 import { taskReducer } from "./features/tasksSlice/tasksSlice";
 import { uiReducer } from "./features/uiSlice/uiSlice";
 import { userReducer } from "./features/usersSlice/usersSlice";
@@ -10,6 +11,7 @@ export const store = configureStore({
     user: userReducer,
     tasks: taskReducer,
     day: dayReducer,
+    task: detailsTaskReducer,
   },
 });
 

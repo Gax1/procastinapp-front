@@ -10,8 +10,9 @@ import { TaskFormStyled } from "./TaskFormStyled";
 interface TaskFormProps {
   buttonText: string;
   navigation: string;
-  sendData: (formData: FormData, id: string, token: string) => Promise<void>;
+  sendData: (id: string, token: string, formData: FormData) => Promise<void>;
   initialData: InitialForm;
+  id: string;
 }
 
 const TaskForm = ({
@@ -19,8 +20,9 @@ const TaskForm = ({
   navigation,
   sendData,
   initialData,
+  id,
 }: TaskFormProps): JSX.Element => {
-  const { id, token } = useAppSelector((state: RootState) => state.user);
+  const { token } = useAppSelector((state: RootState) => state.user);
   const navigate = useNavigate();
 
   const formData = new FormData();
@@ -48,13 +50,22 @@ const TaskForm = ({
 
     const date = dateFormater(new Date(newTask.date));
 
+    if (typeof newTask.img === "string") {
+      newTask.img = new File([""], "");
+    }
+
     formData.append("title", newTask.title);
     formData.append("description", newTask.description);
     formData.append("date", date);
     formData.append("importance", newTask.importance);
     formData.append("img", newTask.img);
+    if (newTask.owner) {
+      formData.append("owner", newTask.owner);
+      formData.append("backUpImg", newTask.backUpImg!);
+      formData.append("id", newTask.id!);
+    }
 
-    await sendData(formData, token, id);
+    await sendData(id, token, formData);
     navigate(navigation);
   };
 
