@@ -9,7 +9,7 @@ import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
 import TaskForm from "./TaskForm";
 import userEvent from "@testing-library/user-event";
 import { useTasks } from "../../store/hooks/tasksHook";
-import { InitialForm } from "../../interfaces/interfaces";
+import { InitialForm, Task } from "../../interfaces/interfaces";
 
 describe("Given a taskForm component", () => {
   const titlePlaceHolder = "here goes the title...";
@@ -68,6 +68,17 @@ describe("Given a taskForm component", () => {
     const imgMock = new File([""], "");
 
     test("Then it should call the onSubmit function", async () => {
+      const initalTask: Task = {
+        title: "",
+        description: "",
+        date: "",
+        importance: "",
+        img: "test-img",
+        id: "",
+        owner: "test-owner",
+        backUpImg: "",
+      };
+
       const {
         result: {
           current: { createTask },
@@ -79,7 +90,7 @@ describe("Given a taskForm component", () => {
             buttonText="Create Task"
             navigation="/my-day"
             sendData={createTask}
-            initialData={initalFormState}
+            initialData={initalTask}
             id={id}
           />
         </Wrapper>

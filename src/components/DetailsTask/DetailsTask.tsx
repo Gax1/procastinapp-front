@@ -61,6 +61,7 @@ export const DetailsTask = ({ task }: DetailsTaskProps): JSX.Element => {
             icon={faPencil}
             className="icon"
             onClick={() => navigate(`/my-task/update/${task.id}`)}
+            data-testid="icon"
           />
           <FontAwesomeIcon
             icon={faTrashAlt}
