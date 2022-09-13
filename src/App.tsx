@@ -6,7 +6,8 @@ import { Modal } from "./components/Modal/Modal";
 import CreateTaskPage from "./pages/CreateTaskPage/CreateTaskPage";
 import { DayTasksPage } from "./pages/DayTasksPage/DayTasksPage";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
-import { ModifyTask } from "./pages/ModifyTask/ModifyTask";
+import { ModifyTask } from "./pages/ModifyTaskPage/ModifyTaskPage";
+
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 import { RegisterPage } from "./pages/RegisterPage/RegisterPage";
 import { TaskDetailsPage } from "./pages/TaskDetailsPage/TaskDetailsPage";
@@ -31,7 +32,7 @@ function App() {
     <>
       <div className="main-container">
         {isLoadding && <Loading />}
-        {/* <Modal />
+        <Modal />
         <Routes>
           <Route path="/" element={<Navigate to={"/login"} />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -53,8 +54,7 @@ function App() {
             element={<AuthLogin children={<ModifyTask />} />}
           />
           <Route path="*" element={<NotFoundPage />} />
-        </Routes> */}
-        <ModifyTask />
+        </Routes>
       </div>
     </>
   );
