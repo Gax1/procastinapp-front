@@ -66,4 +66,21 @@ export class TasksRepository<Task extends Item>
       return error;
     }
   };
+
+  editTask = async (id: string, token: string, editedTask: FormData) => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+      params: { id: id },
+    };
+    try {
+      const { data } = await axios.put(
+        `${this.url}//my-day`,
+        editedTask,
+        config
+      );
+      return data;
+    } catch (error) {
+      return error;
+    }
+  };
 }
