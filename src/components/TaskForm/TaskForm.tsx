@@ -10,7 +10,7 @@ import { TaskFormStyled } from "./TaskFormStyled";
 interface TaskFormProps {
   buttonText: string;
   navigation: string;
-  sendData: (formData: FormData, id: string, token: string) => Promise<void>;
+  sendData: (id: string, token: string, formData: FormData) => Promise<void>;
   initialData: InitialForm;
 }
 
@@ -54,7 +54,7 @@ const TaskForm = ({
     formData.append("importance", newTask.importance);
     formData.append("img", newTask.img);
 
-    await sendData(formData, token, id);
+    await sendData(id, token, formData);
     navigate(navigation);
   };
 

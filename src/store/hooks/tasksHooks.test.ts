@@ -107,7 +107,7 @@ describe("Given a useTasks createTask function", () => {
         },
       } = renderHook(() => useTasks(), { wrapper: Wrapper });
 
-      await createTask(formData, token, id);
+      await createTask(id, token, formData);
 
       expect(mockDispatch).toHaveBeenCalledWith(
         uploadDayTasksActionCreator([expectedTask])
@@ -140,7 +140,7 @@ describe("Given a useTasks createTask function", () => {
         },
       } = renderHook(() => useTasks(), { wrapper: Wrapper });
 
-      await createTask(formData, token, id);
+      await createTask(id, token, formData);
 
       expect(mockDispatch).toHaveBeenCalledWith(
         openNotificationActionCreator("Succeded: task created")
@@ -159,7 +159,7 @@ describe("Given a useTasks createTask function", () => {
         },
       } = renderHook(() => useTasks(), { wrapper: Wrapper });
 
-      await createTask(formData, token, id);
+      await createTask(id, token, formData);
 
       expect(mockDispatch).toHaveBeenCalledWith(
         openNotificationActionCreator("Error creating the task")
