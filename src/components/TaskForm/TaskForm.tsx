@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { InitialForm } from "../../interfaces/interfaces";
 import { useAppSelector } from "../../store/hooks/hooks";
-import { useTasks } from "../../store/hooks/tasksHook";
 import { RootState } from "../../store/store";
 import { dateFormater } from "../../utils/dateFormater";
 import { Button } from "../Button/Button";
@@ -10,32 +10,22 @@ import { TaskFormStyled } from "./TaskFormStyled";
 interface TaskFormProps {
   buttonText: string;
   navigation: string;
+  sendData: (formData: FormData, id: string, token: string) => Promise<void>;
+  initialData: InitialForm;
 }
 
-interface InitialForm {
-  title: string;
-  description: string;
-  date: string;
-  importance: string;
-  img: string | File;
-}
-
-const TaskForm = ({ buttonText, navigation }: TaskFormProps): JSX.Element => {
-  const initalFormState: InitialForm = {
-    title: "",
-    description: "",
-    date: "",
-    importance: "",
-    img: "",
-  };
-
-  const { createTask } = useTasks();
+const TaskForm = ({
+  buttonText,
+  navigation,
+  sendData,
+  initialData,
+}: TaskFormProps): JSX.Element => {
   const { id, token } = useAppSelector((state: RootState) => state.user);
   const navigate = useNavigate();
 
   const formData = new FormData();
 
-  const [newTask, setNewTask] = useState(initalFormState);
+  const [newTask, setNewTask] = useState(initialData);
 
   const handleChangeText = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewTask({ ...newTask, [event.target.id]: event.target.value });
@@ -64,7 +54,7 @@ const TaskForm = ({ buttonText, navigation }: TaskFormProps): JSX.Element => {
     formData.append("importance", newTask.importance);
     formData.append("img", newTask.img);
 
-    await createTask(formData, token, id);
+    await sendData(formData, token, id);
     navigate(navigation);
   };
 

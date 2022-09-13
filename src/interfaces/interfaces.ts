@@ -47,3 +47,14 @@ export interface Task {
   owner: string;
   backUpImg?: string;
 }
+
+export interface InitialForm {
+  title: string;
+  description: string;
+  date: string;
+  importance: string;
+  img: string | File;
+  backUpImg?: string;
+  owner?: string;
+  id?: string;
+}
