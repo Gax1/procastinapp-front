@@ -114,11 +114,15 @@ export const useTasks = () => {
     const repoTasks = new TasksRepository(url);
 
     try {
-      await repoTasks.editTask(id, token, editedTask);
+      const response = await repoTasks.editTask(id, token, editedTask);
+      if (response instanceof Error) {
+        throw new Error();
+      }
       dispatch(closeLoadingActionCreator());
       return;
     } catch (error) {
-      dispatch(closeLoadingActionCreator());
+      dispatch(openNotificationActionCreator("Error editing that task"));
+
       return error;
     }
   };
