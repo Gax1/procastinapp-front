@@ -1,12 +1,14 @@
 .react-calendar {
   border-radius: 40px;
   font-family: inherit;
-  min-width: 250px;
+  min-width: 300px;
   width: 90%;
   background-color: #e7e1d5;
   margin-top: 20px;
   margin-bottom: 20px;
   border: none;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .react-calendar__navigation__label {
   font-family: inherit;
@@ -17,4 +19,7 @@
 }
 .react-calendar__navigation__arrow {
   font-size: 25px;
+}
+.react-calendar__navigation button {
+  min-width: 0;
 }

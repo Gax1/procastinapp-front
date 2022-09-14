@@ -20,6 +20,9 @@ export const TaskFormStyled = styled.form`
     font-size: 20px;
     padding: 10px;
   }
+  .importance-label {
+    text-align: center;
+  }
   .task-input__description {
     padding: 10px;
   }

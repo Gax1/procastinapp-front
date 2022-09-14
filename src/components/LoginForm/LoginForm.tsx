@@ -31,6 +31,7 @@ export const LoginForm = (): JSX.Element => {
     <LoginFormStyled data-testid="loginForm" onSubmit={handleOnSubmit}>
       <label htmlFor="username">Username:</label>
       <input
+        autoComplete="off"
         type="text"
         className="form-input login-input"
         id="username"
@@ -40,6 +41,7 @@ export const LoginForm = (): JSX.Element => {
       />
       <label htmlFor="password">Password:</label>
       <input
+        autoComplete="off"
         type="password"
         className="form-input login-input"
         id="password"

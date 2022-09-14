@@ -79,6 +79,7 @@ const TaskForm = ({
     <TaskFormStyled onSubmit={onSubmit} data-testid="taskForm">
       <label htmlFor="title">Title:</label>
       <input
+        autoComplete="off"
         type="text"
         className="form-input task-input"
         id="title"
@@ -88,6 +89,7 @@ const TaskForm = ({
       />
       <label htmlFor="date">Pick a Date:</label>
       <input
+        autoComplete="off"
         type="date"
         className="form-input task-input__date"
         id="date"
@@ -96,6 +98,7 @@ const TaskForm = ({
       />
       <label htmlFor="description">Description:</label>
       <textarea
+        autoComplete="off"
         id="description"
         onChange={handleChangeTextArea}
         className="form-input task-input__description"
@@ -104,8 +107,10 @@ const TaskForm = ({
         placeholder="Write here youre description..."
         value={newTask.description}
       ></textarea>
-      <label htmlFor="importance">How importan is this task for you?</label>
-      <select name="importance" id="importance" onChange={handleChangeSelect}>
+      <label htmlFor="importance" className="importance-label">
+        How importan is this task for you?
+      </label>
+      <select id="importance" onChange={handleChangeSelect}>
         <option value="">Select importance</option>
         <option value="very">very</option>
         <option value="medium">medium</option>
@@ -113,6 +118,7 @@ const TaskForm = ({
       </select>
       <label htmlFor="img">Select a file:</label>
       <input
+        autoComplete="off"
         type="file"
         className="task-input__select-image"
         id="img"

@@ -32,14 +32,9 @@ export const TaskDetailsPage = (): JSX.Element => {
       <Header />
       <TaskDetailsPageStyled>
         <div className="header-details">
-          <span className="page-title navigation-arrow">
-            <NavLink to={"/my-day"}>
-              <FontAwesomeIcon
-                className="icon icon-navigation"
-                icon={faReply}
-              />
-            </NavLink>
-          </span>
+          <NavLink to={"/my-day"}>
+            <FontAwesomeIcon className="icon icon-navigation" icon={faReply} />
+          </NavLink>
           <h2 className="page-title">My Task</h2>
           <span>&nbsp; </span>
         </div>

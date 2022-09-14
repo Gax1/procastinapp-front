@@ -5,6 +5,7 @@ export const TaskDetailsPageStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   .header-details {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -13,8 +14,10 @@ export const TaskDetailsPageStyled = styled.div`
     font-size: ${(props) => props.theme.fontSizesMobile.big};
     justify-content: space-around;
     width: 80%;
+    text-align: center;
+    align-items: center;
   }
   .icon-navigation {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
   }
 `;
