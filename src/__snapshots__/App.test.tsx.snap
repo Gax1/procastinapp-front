@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given the app component When rendered Then it should always match this snapshot 1`] = `
+Array [
+  <div
+    className="main-container"
+  />,
+  ";",
+]
+`;

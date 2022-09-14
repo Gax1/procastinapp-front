@@ -51,7 +51,7 @@ const TaskForm = ({
     const date = dateFormater(new Date(newTask.date));
 
     if (typeof newTask.img === "string") {
-      newTask.img = new File([""], "");
+      newTask.img = new File([""], "invalid-img");
     }
 
     formData.append("title", newTask.title);

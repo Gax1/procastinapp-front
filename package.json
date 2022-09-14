@@ -56,9 +56,11 @@
   "devDependencies": {
     "@types/jsonwebtoken": "^8.5.9",
     "@types/react-calendar": "^3.5.2",
+    "@types/react-test-renderer": "^18.0.0",
     "@types/styled-components": "^5.1.26",
     "husky": "^8.0.0",
-    "msw": "^0.46.1"
+    "msw": "^0.46.1",
+    "react-test-renderer": "^18.2.0"
   },
   "jest": {
     "collectCoverageFrom": [
