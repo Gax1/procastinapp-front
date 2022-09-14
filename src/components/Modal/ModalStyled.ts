@@ -21,6 +21,10 @@ export const ModalStyled = styled.div`
     border-radius: 40px;
     position: relative;
   }
+  span {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
   .close-modal-icon {
     position: absolute;
     right: 5%;

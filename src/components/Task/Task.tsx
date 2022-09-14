@@ -20,6 +20,7 @@ const Task = ({ tasks, token }: TaskProps): JSX.Element => {
   return (
     <TaskStyled>
       <header className="task-card-header">
+        <span>&nbsp; </span>
         <h2 className="title-task">{tasks.title}</h2>
         <div className={`circle circle__${tasks.importance}`}></div>
       </header>

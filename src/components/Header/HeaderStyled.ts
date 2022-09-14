@@ -13,5 +13,6 @@ export const HeaderStyled = styled.div`
   align-items: center;
   .logout-icon {
     font-size: 1.5rem;
+    margin-right: 10px;
   }
 `;
