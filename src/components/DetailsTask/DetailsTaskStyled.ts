@@ -50,4 +50,8 @@ export const DetailsTaskStyled = styled.div`
     margin-bottom: 40px;
     font-size: 30px;
   }
+  .description {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `;

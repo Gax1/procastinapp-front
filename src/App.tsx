@@ -20,14 +20,14 @@ function App() {
   const { isLoadding } = useAppSelector(
     (state: RootState) => state.ui.notification
   );
-  debugger;
+
   const user = localStorage.getItem("user");
   useMemo(() => {
     if (user) {
       dispatch(loginUserActionCreator(JSON.parse(user)));
     }
   }, [user, dispatch]);
-  debugger;
+
   return (
     <>
       <div className="main-container">

@@ -53,6 +53,7 @@ const RegisterForm = (): JSX.Element => {
         >
           <label htmlFor="username">Username:</label>
           <input
+            autoComplete="off"
             type="text"
             id="username"
             className="form-input register-input"
@@ -62,6 +63,7 @@ const RegisterForm = (): JSX.Element => {
           />
           <label htmlFor="password">Password:</label>
           <input
+            autoComplete="off"
             type="password"
             id="password"
             className="form-input register-input"
@@ -71,6 +73,7 @@ const RegisterForm = (): JSX.Element => {
           />
           <label htmlFor="repetedPassword">Repeat youre Password:</label>
           <input
+            autoComplete="off"
             type="password"
             id="repetedPassword"
             className="form-input register-input"
@@ -80,6 +83,7 @@ const RegisterForm = (): JSX.Element => {
           />
           <label htmlFor="img">Select a file: </label>
           <input
+            autoComplete="off"
             type="file"
             id="img"
             className="form-input register-input__select-image"

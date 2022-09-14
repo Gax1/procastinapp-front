@@ -38,7 +38,7 @@ export const DetailsTask = ({ task }: DetailsTaskProps): JSX.Element => {
         <div className="task-information">
           <div className="task-description task-data">
             <span>Description:</span>
-            <span>{task.description}</span>
+            <span className="description">{task.description}</span>
           </div>
           <div className="task-importance task-data">
             <span>Importance:</span>
