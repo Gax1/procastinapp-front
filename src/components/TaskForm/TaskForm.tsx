@@ -108,7 +108,7 @@ const TaskForm = ({
         value={newTask.description}
       ></textarea>
       <label htmlFor="importance" className="importance-label">
-        How importan is this task for you?
+        How important is this task for you?
       </label>
       <select id="importance" onChange={handleChangeSelect}>
         <option value="">Select importance</option>
