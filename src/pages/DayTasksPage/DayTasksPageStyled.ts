@@ -16,6 +16,7 @@ export const DayTasksPageStyled = styled.div`
     background-color: ${(props) => props.theme.colors.mainColor};
     width: 90%;
     border-radius: 40px;
+    margin-bottom: 40px;
   }
   .title-taks {
     display: flex;
