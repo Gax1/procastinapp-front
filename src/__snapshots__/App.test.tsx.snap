@@ -8,3 +8,139 @@ Array [
   ";",
 ]
 `;
+
+exports[`Given the app component When rendered with loadding true Then it should always match this snapshot 1`] = `
+Array [
+  <div
+    className="main-container"
+  >
+    <div
+      className="sc-bczRLJ fHfluP"
+    >
+      <span
+        className="loader"
+        data-testid="loader-container"
+      />
+      ;
+    </div>
+    <div
+      className="sc-papXJ kMcOep"
+    >
+      <div
+        className="sc-dkzDqf ggJhlD"
+      >
+        <span>
+            
+        </span>
+        <h1
+          className="main-title"
+        >
+          ProcastinapP
+        </h1>
+        <a
+          aria-current="page"
+          className="active"
+          href="/login"
+          onClick={[Function]}
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-arrow-right-from-bracket logout-icon"
+            data-icon="arrow-right-from-bracket"
+            data-prefix="fas"
+            focusable="false"
+            onClick={[Function]}
+            role="img"
+            style={Object {}}
+            viewBox="0 0 576 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M534.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L434.7 224 224 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM192 96c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-53 0-96 43-96 96l0 256c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+      </div>
+      <div
+        className="login-text-container"
+      >
+        <span
+          className="text-container"
+        >
+          We are here to help you do stuff
+        </span>
+        <span
+          className="text-container"
+        >
+          Just do the taks you write here, Is better for you!
+           
+        </span>
+        <span
+          className="text-container"
+        >
+          And dont forget take a rest!
+        </span>
+      </div>
+      <form
+        className="sc-ftvSup cISgci"
+        data-testid="loginForm"
+        onSubmit={[Function]}
+      >
+        <label
+          htmlFor="username"
+        >
+          Username:
+        </label>
+        <input
+          className="form-input login-input"
+          id="username"
+          onChange={[Function]}
+          placeholder="here goes youre username..."
+          type="text"
+          value=""
+        />
+        <label
+          htmlFor="password"
+        >
+          Password:
+        </label>
+        <input
+          className="form-input login-input"
+          id="password"
+          onChange={[Function]}
+          placeholder="here goes youre password..."
+          type="password"
+          value=""
+        />
+        <button
+          className="sc-hKMtZM jWKiMN submit-button"
+          disabled={true}
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+      <footer
+        className="login-footer"
+      >
+        <span
+          className="text-container"
+        >
+          You don\`t have an account yet?
+        </span>
+        <a
+          className="text-container register-text"
+          href="/register"
+          onClick={[Function]}
+        >
+          Click Here!
+           
+        </a>
+      </footer>
+    </div>
+  </div>,
+  ";",
+]
+`;
