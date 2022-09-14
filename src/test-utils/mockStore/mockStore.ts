@@ -5,7 +5,7 @@ const initialUiState: UiState = {
   notification: {
     open: false,
     displayText: "",
-    isLoadding: false,
+    isLoadding: true,
   },
 };
 
