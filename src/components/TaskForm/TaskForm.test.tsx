@@ -15,7 +15,7 @@ describe("Given a taskForm component", () => {
   const titlePlaceHolder = "here goes the title...";
   const dateText = "Pick a Date:";
   const describePlaceHolder = "Write here youre description...";
-  const importanceText = "How importan is this task for you?";
+  const importanceText = "How important is this task for you?";
   const initalFormState: InitialForm = {
     title: "",
     description: "",
