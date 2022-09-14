@@ -23,6 +23,7 @@ const TaskStyled = styled.section`
     width: 35px;
     border-radius: 50%;
     border: 17.5px solid;
+    margin-right: 10px;
   }
   .circle__very {
     border-color: red;

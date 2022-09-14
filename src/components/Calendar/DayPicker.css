@@ -18,7 +18,8 @@
   background-color: #f9c5a2;
 }
 .react-calendar__navigation__arrow {
-  font-size: 25px;
+  font-size: 35px;
+  padding: 0 15px 0 15px;
 }
 .react-calendar__navigation button {
   min-width: 0;
