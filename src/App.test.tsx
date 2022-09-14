@@ -1,3 +1,4 @@
+import { render, screen } from "@testing-library/react";
 import TestRenderer from "react-test-renderer";
 import App from "./App";
 import { MockedWrapper, Wrapper } from "./test-utils/Wrapper/Wrapper";
@@ -14,19 +15,21 @@ describe("Given the app component", () => {
       expect(expectedApp).toMatchSnapshot();
     });
   });
-  describe("When rendered with loadding true", () => {
-    test("Then it should always match this snapshot", () => {
+  describe("When rendered with loading true", () => {
+    test("Then it should show a modal", () => {
       jest.spyOn(Object.getPrototypeOf(window.localStorage), "getItem");
       Object.setPrototypeOf(window.localStorage.getItem, {
         user: { id: "test-id" },
       });
-      const expectedApp = TestRenderer.create(
+      render(
         <MockedWrapper>
           <App />
         </MockedWrapper>
       );
 
-      expect(expectedApp).toMatchSnapshot();
+      const login = screen.getByTestId("loader-container");
+
+      expect(login).toBeInTheDocument();
     });
   });
 });
