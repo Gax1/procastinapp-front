@@ -9,8 +9,6 @@ const user = {
   username: "test-username",
 };
 
-localStorage.setItem("user", JSON.stringify(user));
-
 describe("Given the app component", () => {
   describe("When rendered", () => {
     test("Then it should always match this snapshot", () => {
@@ -25,6 +23,7 @@ describe("Given the app component", () => {
   });
   describe("When rendered with loading true", () => {
     test("Then it should show a modal", () => {
+      localStorage.setItem("user", JSON.stringify(user));
       render(
         <MockedWrapper>
           <App />
